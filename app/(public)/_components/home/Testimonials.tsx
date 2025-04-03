@@ -98,7 +98,7 @@ export default function Testimonials() {
             What Our Customers Say
           </h2>
           <p className="text-secondary-600 dark:text-secondary-400 text-lg">
-            Don't just take our word for it — hear from our satisfied customers
+            Don&apos;t just take our word for it — hear from our satisfied customers
           </p>
         </div>
 

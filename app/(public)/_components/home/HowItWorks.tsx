@@ -1,5 +1,4 @@
 // app/(public)/_components/home/HowItWorks.tsx
-import Image from "next/image";
 import { CheckCircle, CalendarDays, Car } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { SiMercedes, SiAudi, SiBmw, SiToyota, SiHonda, SiVolkswagen } from "react-icons/si";

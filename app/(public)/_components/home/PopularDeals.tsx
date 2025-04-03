@@ -3,7 +3,6 @@
 
 import { useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
 import CarCard from "@/components/cars/CarCard";
 import Button from "@/components/ui/Button";
 
