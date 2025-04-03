@@ -1,12 +1,8 @@
 // app/(public)/_components/home/HowItWorks.tsx
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
 import { CheckCircle, CalendarDays, Car } from "lucide-react";
-
-interface CarBrand {
-  name: string;
-  logo: string;
-}
+import Button from "@/components/ui/Button";
+import { SiMercedes, SiAudi, SiBmw, SiToyota, SiHonda, SiVolkswagen } from "react-icons/si";
 
 interface Step {
   icon: React.ReactNode;
@@ -15,109 +11,129 @@ interface Step {
   number: number;
 }
 
-export default function HowItWorks() {
-  const carBrands: CarBrand[] = [
-    { name: "Honda", logo: "/logos/honda.png" },
-    { name: "Jaguar", logo: "/logos/jaguar.png" },
-    { name: "Nissan", logo: "/logos/nissan.png" },
-    { name: "Volvo", logo: "/logos/volvo.png" },
-    { name: "Audi", logo: "/logos/audi.png" },
-    { name: "Acura", logo: "/logos/acura.png" },
-  ];
+interface Brand {
+  name: string;
+  logo: React.ReactNode;
+}
 
+export default function HowItWorks() {
   const steps: Step[] = [
     {
       number: 1,
-      icon: <CheckCircle className="text-blue-400 w-8 h-8" />,
+      icon: <CheckCircle className="text-primary-500 w-7 h-7" />,
       title: "Choose Location",
-      description: "Choose your location and find your best car"
+      description: "Select your pickup location and find available vehicles in your area"
     },
     {
       number: 2,
-      icon: <CalendarDays className="text-blue-400 w-8 h-8" />,
+      icon: <CalendarDays className="text-primary-500 w-7 h-7" />,
       title: "Pick-up Date",
-      description: "Select your pick up date and time to book your car"
+      description: "Choose your rental dates and times that work best for your schedule"
     },
     {
       number: 3,
-      icon: <Car className="text-blue-400 w-8 h-8" />,
+      icon: <Car className="text-primary-500 w-7 h-7" />,
       title: "Book Your Car",
-      description: "Book your car and we will deliver it directly to you"
+      description: "Select your perfect vehicle and complete your booking in minutes"
     }
   ];
 
+  const carClassName = "w-full h-20";
+
+  const brands: Brand[] = [
+    { name: "BMW", logo: <SiBmw className={carClassName} /> },
+    { name: "Audi", logo: <SiAudi className={carClassName} /> },
+    { name: "Mercedes", logo: <SiMercedes className={carClassName} /> },
+    { name: "Toyota", logo: <SiToyota className={carClassName} /> },
+    { name: "Honda", logo: <SiHonda className={carClassName} /> },
+    { name: "Volkswagen", logo: <SiVolkswagen className={carClassName} /> }
+  ];
+
   return (
-    <section className="bg-secondary-950 py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-white dark:bg-secondary-900 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <span className="inline-block text-blue-400 font-medium tracking-wider text-sm uppercase mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
             How It Works
-          </span>
-          <h2 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mx-auto">
-            Rent with 3 Simple Steps
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">
+            Rent Your Dream Car in Three Simple Steps
           </h2>
+          <p className="text-secondary-600 dark:text-secondary-400 text-lg">
+            Our streamlined booking process makes it easy to reserve the perfect vehicle for your needs.
+          </p>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
+        {/* Steps Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {steps.map((step) => (
             <div key={step.number} className="relative group">
-              {/* Step Number */}
-              <div className="absolute -top-8 -left-6 text-8xl font-bold text-blue-900/20 group-hover:text-blue-800/20 transition-colors duration-500">
-                {step.number}
-              </div>
+              {/* Step connection line */}
+              {step.number < 3 && (
+                <div className="hidden md:block absolute top-16 left-full w-full h-0.5 bg-secondary-200 dark:bg-secondary-700 -z-10">
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary-500"></div>
+                </div>
+              )}
               
-              {/* Step Card */}
-              <div className="relative z-10 bg-gray-900 rounded-lg p-8 h-full shadow-xl transition-transform duration-300 group-hover:translate-y-[-8px]">
-                {/* Blue glow effect behind icon */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-blue-900/10 blur-xl"></div>
+              {/* Card */}
+              <div className="bg-secondary-50 dark:bg-secondary-800 rounded-xl p-8 border border-secondary-200 dark:border-secondary-700 h-full transform transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-lg relative">
+                {/* Step Number */}
+                <div className="absolute -top-4 -right-4 bg-primary-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-md">
+                  {step.number}
+                </div>
                 
-                <div className="relative bg-gray-800 p-4 rounded-lg w-16 h-16 flex items-center justify-center mb-6 border border-blue-800/20">
+                {/* Icon */}
+                <div className="bg-primary-100 dark:bg-primary-900/40 rounded-full w-14 h-14 flex items-center justify-center mb-6">
                   {step.icon}
                 </div>
                 
-                <h3 className="text-white text-xl font-bold mb-4 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-bold text-secondary-900 dark:text-white mb-3">
                   {step.title}
                 </h3>
                 
-                <p className="text-gray-400">
+                <p className="text-secondary-600 dark:text-secondary-400">
                   {step.description}
                 </p>
-                
-                {/* Subtle accent line */}
-                <div className="w-12 h-1 bg-blue-700/30 mt-6"></div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Brands Marquee with subtle border */}
-        <div className="border-t border-blue-900/20 pt-16">
-          <h3 className="text-center text-2xl font-bold text-white mb-10">
-            Trusted by Leading Brands
-          </h3>
-          <Marquee
-            gradient={false}
-            speed={40}
-            pauseOnHover={true}
-            className="py-6"
+        {/* CTA Section */}
+        <div className="flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-8 md:p-10 shadow-lg">
+          <div className="mb-6 md:mb-0 text-white">
+            <h3 className="text-2xl font-bold mb-2">Ready to book your ride?</h3>
+            <p className="text-primary-100 max-w-md">
+              Experience the freedom of premium car rental with transparent pricing and no hidden fees.
+            </p>
+          </div>
+          <Button 
+            variant="secondary" 
+            size="lg"
+            className=""
           >
-            {carBrands.map((brand, index) => (
+            Browse All Vehicles
+          </Button>
+        </div>
+
+        {/* Brands Section */}
+        <div className="mt-24">
+          <h3 className="text-center text-xl font-semibold text-secondary-900 dark:text-white mb-8">
+            Trusted by Leading Auto Brands
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            {brands.map((brand) => (
               <div 
-                key={index} 
-                className="mx-12 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300"
+                key={brand.name} 
+                className="flex items-center justify-center p-6 rounded-lg border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-800 opacity-60 hover:opacity-100 transition-opacity duration-300"
               >
-                <Image
-                  src={brand.logo}
-                  alt={`${brand.name} logo`}
-                  width={120}
-                  height={40}
-                  className="object-contain grayscale brightness-200"
-                />
+                <div className="transition-all">
+                  {brand.logo}
+                </div>
               </div>
             ))}
-          </Marquee>
+          </div>
         </div>
       </div>
     </section>

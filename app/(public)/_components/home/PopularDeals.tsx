@@ -1,7 +1,11 @@
 // app/(public)/_components/home/PopularDeals.tsx
-import { ArrowRight } from "lucide-react";
-import CarCard from "@/components/cars/CarCard";
+"use client";
+
+import { useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import CarCard from "@/components/cars/CarCard";
+import Button from "@/components/ui/Button";
 
 interface Car {
   id: number;
@@ -14,10 +18,15 @@ interface Car {
   doors: number;
   transmission: string;
   price: number;
+  category: string;
 }
 
+type CategoryType = "all" | "luxury" | "suv" | "sports" | "economy";
+
 export default function PopularDeals() {
-  // Sample car data - in a real app, this would come from an API or props
+  const [activeCategory, setActiveCategory] = useState<CategoryType>("all");
+
+  // Sample car data
   const popularCars: Car[] = [
     {
       id: 1,
@@ -29,7 +38,8 @@ export default function PopularDeals() {
       airConditioning: true,
       doors: 4,
       transmission: "Auto",
-      price: 1800,
+      price: 180,
+      category: "luxury"
     },
     {
       id: 2,
@@ -41,7 +51,8 @@ export default function PopularDeals() {
       airConditioning: true,
       doors: 2,
       transmission: "Auto",
-      price: 2100,
+      price: 210,
+      category: "sports"
     },
     {
       id: 3,
@@ -53,7 +64,8 @@ export default function PopularDeals() {
       airConditioning: true,
       doors: 4,
       transmission: "Auto",
-      price: 1600,
+      price: 160,
+      category: "sports"
     },
     {
       id: 4,
@@ -65,39 +77,142 @@ export default function PopularDeals() {
       airConditioning: true,
       doors: 2,
       transmission: "Auto",
-      price: 2300,
+      price: 230,
+      category: "sports"
     },
+    {
+      id: 5,
+      name: "Tesla Model X",
+      image: "/cars/tesla-x.png",
+      rating: 4.7,
+      reviews: 1895,
+      passengers: 7,
+      airConditioning: true,
+      doors: 5,
+      transmission: "Auto",
+      price: 190,
+      category: "suv"
+    },
+    {
+      id: 6,
+      name: "Toyota Corolla",
+      image: "/cars/toyota-corolla.png",
+      rating: 4.2,
+      reviews: 3542,
+      passengers: 5,
+      airConditioning: true,
+      doors: 4,
+      transmission: "Auto",
+      price: 70,
+      category: "economy"
+    },
+    {
+      id: 7,
+      name: "Range Rover Sport",
+      image: "/cars/range-rover.png",
+      rating: 4.6,
+      reviews: 1736,
+      passengers: 5,
+      airConditioning: true,
+      doors: 5,
+      transmission: "Auto",
+      price: 200,
+      category: "suv"
+    },
+    {
+      id: 8,
+      name: "Honda Civic",
+      image: "/cars/honda-civic.png",
+      rating: 4.1,
+      reviews: 2865,
+      passengers: 5,
+      airConditioning: true,
+      doors: 4,
+      transmission: "Auto",
+      price: 65,
+      category: "economy"
+    }
   ];
 
+  const categories = [
+    { id: "all", label: "All Vehicles" },
+    { id: "luxury", label: "Luxury" },
+    { id: "sports", label: "Sports" },
+    { id: "suv", label: "SUVs" },
+    { id: "economy", label: "Economy" },
+  ];
+
+  const filteredCars = activeCategory === "all" 
+    ? popularCars
+    : popularCars.filter(car => car.category === activeCategory);
+
   return (
-    <section className="bg-secondary-950 py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-white dark:bg-secondary-900">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-blue-400 font-medium tracking-wider text-sm uppercase mb-3">
-            Popular Rental Deals
-          </span>
-          <h2 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mx-auto">
-            Most Popular Cars Rental Deals
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+            Popular Vehicles
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">
+            Most Popular Rental Vehicles
           </h2>
+          <p className="text-secondary-600 dark:text-secondary-400 text-lg">
+            Choose from our selection of premium vehicles at competitive rates
+          </p>
+        </div>
+
+        {/* Category Filters */}
+        <div className="flex justify-center mb-12 overflow-x-auto pb-4">
+          <div className="inline-flex bg-secondary-100 dark:bg-secondary-800 p-1 rounded-lg shadow-sm">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id as CategoryType)}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeCategory === category.id
+                    ? "bg-white dark:bg-secondary-700 text-secondary-900 dark:text-white shadow-sm"
+                    : "text-secondary-700 dark:text-secondary-300 hover:text-secondary-900 dark:hover:text-white"
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Car Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {popularCars.map((car) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {filteredCars.slice(0, 4).map((car) => (
             <CarCard key={car.id} car={car} />
           ))}
         </div>
 
-        {/* Show All Button */}
-        <div className="mt-16 text-center">
-          <Link
-            href="/vehicles"
-            className="inline-flex items-center border border-gray-700 bg-transparent hover:bg-gray-800 text-white text-base font-medium px-8 py-4 rounded-md transition-colors"
-          >
-            Show all vehicles
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
+        {/* Controls and CTA */}
+        <div className="flex justify-between items-center">
+          {/* Pagination */}
+          <div className="hidden md:flex space-x-2">
+            <button className="p-2 rounded-full bg-secondary-100 dark:bg-secondary-800 text-secondary-500 dark:text-secondary-400 hover:bg-secondary-200 dark:hover:bg-secondary-700 transition-colors">
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button className="p-2 rounded-full bg-secondary-100 dark:bg-secondary-800 text-secondary-500 dark:text-secondary-400 hover:bg-secondary-200 dark:hover:bg-secondary-700 transition-colors">
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* View all button */}
+          <div className="mx-auto md:mx-0">
+            <Button
+              variant="outline"
+              size="lg"
+              icon={<ArrowRight />}
+              iconPosition="right"
+              asLink
+              href="/vehicles"
+            >
+              View All Vehicles
+            </Button>
+          </div>
         </div>
       </div>
     </section>
