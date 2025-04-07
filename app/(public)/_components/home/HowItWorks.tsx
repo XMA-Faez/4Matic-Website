@@ -110,7 +110,7 @@ export default function HowItWorks() {
           <Button 
             variant="secondary" 
             size="lg"
-            className=""
+            className="bg-primary-100 text-primary-950 hover:bg-primary-200"
           >
             Browse All Vehicles
           </Button>

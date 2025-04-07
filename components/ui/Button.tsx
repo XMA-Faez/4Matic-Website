@@ -72,7 +72,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     const variantStyles = {
       primary: 'bg-primary-600 text-white hover:bg-primary-700',
       secondary: 'bg-secondary-600 text-white hover:bg-secondary-700',
-      outline: 'border border-gray-300 text-gray-700 bg-transparent hover:bg-gray-50',
+      outline: 'border border-gray-300 text-secondary-100 bg-transparent hover:bg-gray-50',
       ghost: 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
       link: 'text-primary-600 hover:text-primary-700 hover:underline p-0 bg-transparent',
     };
