@@ -1,0 +1,465 @@
+// app/(public)/vehicles/_components/FilterSidebar.tsx
+"use client";
+
+import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Slider } from "@/components/ui/Slider";
+import { 
+  ChevronDown, 
+  ChevronUp, 
+  X,
+  SlidersHorizontal,
+  FilterX
+} from "lucide-react";
+import Button from "@/components/ui/Button";
+
+// Filter categories and options
+const categories = [
+  { id: "all", label: "All Vehicles" },
+  { id: "luxury", label: "Luxury" },
+  { id: "sports", label: "Sports" },
+  { id: "suv", label: "SUVs" },
+  { id: "economy", label: "Economy" },
+  { id: "electric", label: "Electric" },
+];
+
+const brands = [
+  { id: "all", label: "All Brands" },
+  { id: "audi", label: "Audi" },
+  { id: "bmw", label: "BMW" },
+  { id: "mercedes", label: "Mercedes-Benz" },
+  { id: "porsche", label: "Porsche" },
+  { id: "tesla", label: "Tesla" },
+  { id: "toyota", label: "Toyota" },
+  { id: "honda", label: "Honda" },
+  { id: "ford", label: "Ford" },
+  { id: "volkswagen", label: "Volkswagen" },
+];
+
+const passengerOptions = [
+  { value: "2", label: "2 Passengers" },
+  { value: "4", label: "4 Passengers" },
+  { value: "5", label: "5 Passengers" },
+  { value: "6", label: "6+ Passengers" },
+];
+
+interface FilterSectionProps {
+  title: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}
+
+const FilterSection = ({ title, isOpen, onToggle, children }: FilterSectionProps) => (
+  <div className="border-b border-secondary-200 dark:border-secondary-700 py-4">
+    <button
+      onClick={onToggle}
+      className="flex items-center justify-between w-full text-left font-medium text-secondary-900 dark:text-white"
+    >
+      {title}
+      {isOpen ? (
+        <ChevronUp className="h-5 w-5 text-secondary-500" />
+      ) : (
+        <ChevronDown className="h-5 w-5 text-secondary-500" />
+      )}
+    </button>
+    {isOpen && <div className="mt-4">{children}</div>}
+  </div>
+);
+
+export default function FilterSidebar() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  // Track which filter sections are open
+  const [openSections, setOpenSections] = useState({
+    category: true,
+    brand: true,
+    price: true,
+    passengers: true,
+  });
+  
+  // For mobile filter visibility
+  const [isMobileFilterVisible, setIsMobileFilterVisible] = useState(false);
+  
+  // Get current filter values from URL
+  const currentCategory = searchParams.get("category") || "all";
+  const currentBrand = searchParams.get("brand") || "all";
+  const currentMinPrice = Number(searchParams.get("minPrice") || "0");
+  const currentMaxPrice = Number(searchParams.get("maxPrice") || "500");
+  const currentPassengers = searchParams.get("passengers") || "";
+  
+  // State for price range slider
+  const [priceRange, setPriceRange] = useState([currentMinPrice, currentMaxPrice]);
+
+  const toggleSection = (section: keyof typeof openSections) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const toggleMobileFilter = () => {
+    setIsMobileFilterVisible(!isMobileFilterVisible);
+  };
+
+  // Update URL with new filter params
+  const applyFilters = (newParams: Record<string, string | null>) => {
+    // Create new URLSearchParams object from current params
+    const params = new URLSearchParams(searchParams.toString());
+    
+    // Update or delete params based on new values
+    Object.entries(newParams).forEach(([key, value]) => {
+      if (value === null || value === 'all') {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+    
+    // Reset to page 1 when filtering
+    params.delete('page');
+    
+    // Navigate to new URL
+    router.push(`/vehicles?${params.toString()}`);
+  };
+
+  // Clear all filters
+  const clearFilters = () => {
+    router.push('/vehicles');
+    setPriceRange([0, 500]);
+  };
+
+  // Handler for category selection
+  const handleCategoryChange = (category: string) => {
+    applyFilters({ category: category === "all" ? null : category });
+  };
+
+  // Handler for brand selection
+  const handleBrandChange = (brand: string) => {
+    applyFilters({ brand: brand === "all" ? null : brand });
+  };
+
+  // Handler for price range change
+  const handlePriceChange = (values: number[]) => {
+    setPriceRange(values);
+  };
+
+  // Apply price filter on slider change end
+  const handlePriceChangeEnd = (values: number[]) => {
+    applyFilters({
+      minPrice: values[0] === 0 ? null : values[0].toString(),
+      maxPrice: values[1] === 500 ? null : values[1].toString(),
+    });
+  };
+
+  // Handler for passenger selection
+  const handlePassengerChange = (passengers: string) => {
+    applyFilters({ passengers: passengers || null });
+  };
+
+  return (
+    <>
+      {/* Mobile Filter Toggle Button */}
+      <div className="lg:hidden mb-6 flex justify-between items-center">
+        <Button
+          variant="outline"
+          size="sm"
+          leftIcon={<SlidersHorizontal className="h-4 w-4" />}
+          onClick={toggleMobileFilter}
+        >
+          Filters
+        </Button>
+        
+        {/* Show "Clear Filters" button on mobile if any filters are applied */}
+        {(currentCategory !== "all" || 
+          currentBrand !== "all" || 
+          currentMinPrice > 0 || 
+          currentMaxPrice < 500 || 
+          currentPassengers) && (
+          <Button
+            variant="ghost"
+            size="sm"
+            leftIcon={<FilterX className="h-4 w-4" />}
+            onClick={clearFilters}
+          >
+            Clear Filters
+          </Button>
+        )}
+      </div>
+
+      {/* Mobile Filter Sidebar (Overlay) */}
+      <div
+        className={`lg:hidden fixed inset-0 bg-secondary-900/80 z-50 transition-opacity duration-300 ${
+          isMobileFilterVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={toggleMobileFilter}
+      />
+
+      <div
+        className={`lg:hidden fixed inset-y-0 left-0 z-50 w-full max-w-xs bg-white dark:bg-secondary-900 shadow-xl transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+          isMobileFilterVisible ? "translate-x-0" : "-translate-x-full"
+        }`}
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+      >
+        <div className="sticky top-0 z-10 bg-white dark:bg-secondary-900 p-4 border-b border-secondary-200 dark:border-secondary-700 flex justify-between items-center">
+          <h2 className="font-bold text-lg text-secondary-900 dark:text-white">Filters</h2>
+          <button
+            onClick={toggleMobileFilter}
+            className="p-2 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800"
+          >
+            <X className="h-5 w-5 text-secondary-500" />
+          </button>
+        </div>
+
+        <div className="p-4">
+          {/* Mobile Filter Content - Same as desktop but with mobile-specific UI */}
+          <FilterSection
+            title="Vehicle Type"
+            isOpen={openSections.category}
+            onToggle={() => toggleSection("category")}
+          >
+            <div className="space-y-2">
+              {categories.map((category) => (
+                <div key={category.id} className="flex items-center">
+                  <input
+                    type="radio"
+                    id={`mobile-category-${category.id}`}
+                    name="mobile-category"
+                    className="w-4 h-4 text-primary-600 dark:text-primary-400 border-secondary-300 dark:border-secondary-700 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+                    checked={currentCategory === category.id}
+                    onChange={() => handleCategoryChange(category.id)}
+                  />
+                  <label
+                    htmlFor={`mobile-category-${category.id}`}
+                    className="ml-2 text-secondary-700 dark:text-secondary-300"
+                  >
+                    {category.label}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </FilterSection>
+
+          <FilterSection
+            title="Brand"
+            isOpen={openSections.brand}
+            onToggle={() => toggleSection("brand")}
+          >
+            <div className="space-y-2">
+              {brands.map((brand) => (
+                <div key={brand.id} className="flex items-center">
+                  <input
+                    type="radio"
+                    id={`mobile-brand-${brand.id}`}
+                    name="mobile-brand"
+                    className="w-4 h-4 text-primary-600 dark:text-primary-400 border-secondary-300 dark:border-secondary-700 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+                    checked={currentBrand === brand.id}
+                    onChange={() => handleBrandChange(brand.id)}
+                  />
+                  <label
+                    htmlFor={`mobile-brand-${brand.id}`}
+                    className="ml-2 text-secondary-700 dark:text-secondary-300"
+                  >
+                    {brand.label}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </FilterSection>
+
+          <FilterSection
+            title="Price Range (per day)"
+            isOpen={openSections.price}
+            onToggle={() => toggleSection("price")}
+          >
+            <div className="px-2 pt-6 pb-2">
+              <Slider
+                min={0}
+                max={500}
+                step={10}
+                value={priceRange}
+                onChange={handlePriceChange}
+                onChangeEnd={handlePriceChangeEnd}
+              />
+              <div className="flex justify-between mt-2 text-sm text-secondary-600 dark:text-secondary-400">
+                <span>${priceRange[0]}</span>
+                <span>${priceRange[1]}</span>
+              </div>
+            </div>
+          </FilterSection>
+
+          <FilterSection
+            title="Passengers"
+            isOpen={openSections.passengers}
+            onToggle={() => toggleSection("passengers")}
+          >
+            <div className="space-y-2">
+              {passengerOptions.map((option) => (
+                <div key={option.value} className="flex items-center">
+                  <input
+                    type="radio"
+                    id={`mobile-passengers-${option.value}`}
+                    name="mobile-passengers"
+                    className="w-4 h-4 text-primary-600 dark:text-primary-400 border-secondary-300 dark:border-secondary-700 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+                    checked={currentPassengers === option.value}
+                    onChange={() => handlePassengerChange(option.value)}
+                  />
+                  <label
+                    htmlFor={`mobile-passengers-${option.value}`}
+                    className="ml-2 text-secondary-700 dark:text-secondary-300"
+                  >
+                    {option.label}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </FilterSection>
+
+          <div className="mt-6 flex space-x-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              fullWidth
+              onClick={clearFilters}
+            >
+              Clear All
+            </Button>
+            <Button
+              variant="primary"
+              size="sm"
+              fullWidth
+              onClick={toggleMobileFilter}
+            >
+              Apply Filters
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Filter Sidebar */}
+      <div className="hidden lg:block sticky top-24 bg-white dark:bg-secondary-900 rounded-xl shadow-sm p-6">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="font-bold text-lg text-secondary-900 dark:text-white">Filters</h2>
+          {/* Show clear button if any filters are applied */}
+          {(currentCategory !== "all" || 
+            currentBrand !== "all" || 
+            currentMinPrice > 0 || 
+            currentMaxPrice < 500 || 
+            currentPassengers) && (
+            <Button
+              variant="ghost"
+              size="sm"
+              leftIcon={<FilterX className="h-4 w-4" />}
+              onClick={clearFilters}
+            >
+              Clear All
+            </Button>
+          )}
+        </div>
+
+        <FilterSection
+          title="Vehicle Type"
+          isOpen={openSections.category}
+          onToggle={() => toggleSection("category")}
+        >
+          <div className="space-y-2">
+            {categories.map((category) => (
+              <div key={category.id} className="flex items-center">
+                <input
+                  type="radio"
+                  id={`category-${category.id}`}
+                  name="category"
+                  className="w-4 h-4 text-primary-600 dark:text-primary-400 border-secondary-300 dark:border-secondary-700 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+                  checked={currentCategory === category.id}
+                  onChange={() => handleCategoryChange(category.id)}
+                />
+                <label
+                  htmlFor={`category-${category.id}`}
+                  className="ml-2 text-secondary-700 dark:text-secondary-300"
+                >
+                  {category.label}
+                </label>
+              </div>
+            ))}
+          </div>
+        </FilterSection>
+
+        <FilterSection
+          title="Brand"
+          isOpen={openSections.brand}
+          onToggle={() => toggleSection("brand")}
+        >
+          <div className="space-y-2">
+            {brands.map((brand) => (
+              <div key={brand.id} className="flex items-center">
+                <input
+                  type="radio"
+                  id={`brand-${brand.id}`}
+                  name="brand"
+                  className="w-4 h-4 text-primary-600 dark:text-primary-400 border-secondary-300 dark:border-secondary-700 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+                  checked={currentBrand === brand.id}
+                  onChange={() => handleBrandChange(brand.id)}
+                />
+                <label
+                  htmlFor={`brand-${brand.id}`}
+                  className="ml-2 text-secondary-700 dark:text-secondary-300"
+                >
+                  {brand.label}
+                </label>
+              </div>
+            ))}
+          </div>
+        </FilterSection>
+
+        <FilterSection
+          title="Price Range (per day)"
+          isOpen={openSections.price}
+          onToggle={() => toggleSection("price")}
+        >
+          <div className="px-2 pt-6 pb-2">
+            <Slider
+              min={0}
+              max={500}
+              step={10}
+              value={priceRange}
+              onChange={handlePriceChange}
+              onChangeEnd={handlePriceChangeEnd}
+            />
+            <div className="flex justify-between mt-2 text-sm text-secondary-600 dark:text-secondary-400">
+              <span>${priceRange[0]}</span>
+              <span>${priceRange[1]}</span>
+            </div>
+          </div>
+        </FilterSection>
+
+        <FilterSection
+          title="Passengers"
+          isOpen={openSections.passengers}
+          onToggle={() => toggleSection("passengers")}
+        >
+          <div className="space-y-2">
+            {passengerOptions.map((option) => (
+              <div key={option.value} className="flex items-center">
+                <input
+                  type="radio"
+                  id={`passengers-${option.value}`}
+                  name="passengers"
+                  className="w-4 h-4 text-primary-600 dark:text-primary-400 border-secondary-300 dark:border-secondary-700 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+                  checked={currentPassengers === option.value}
+                  onChange={() => handlePassengerChange(option.value)}
+                />
+                <label
+                  htmlFor={`passengers-${option.value}`}
+                  className="ml-2 text-secondary-700 dark:text-secondary-300"
+                >
+                  {option.label}
+                </label>
+              </div>
+            ))}
+          </div>
+        </FilterSection>
+      </div>
+    </>
+  );
+}
