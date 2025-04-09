@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -20,8 +21,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "4MATIC | Premium Car Rental Service",
-  description: "Experience the road with 4MATIC premium car rental service. Choose from a wide range of luxury, sports, and economy vehicles.",
-  keywords: ["car rental", "luxury cars", "vehicle hire", "car service", "rental service"],
+  description:
+    "Experience the road with 4MATIC premium car rental service. Choose from a wide range of luxury, sports, and economy vehicles.",
+  keywords: [
+    "car rental",
+    "luxury cars",
+    "vehicle hire",
+    "car service",
+    "rental service",
+  ],
 };
 
 export default function RootLayout({
@@ -37,8 +45,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} font-sans antialiased`}
       >
-        {children}
-        
+        <Suspense>{children}</Suspense>
         {/* Scroll to top button - client component would be added here */}
       </body>
     </html>
