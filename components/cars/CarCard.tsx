@@ -81,7 +81,7 @@ export default function CarCard({ car }: CarCardProps) {
             <span className="text-primary-600 dark:text-primary-400 text-sm font-medium">per day</span>
           </div>
           <Link
-            href={`/cars/${car.id}`}
+            href={`/vehicles/${car.id}`}
             className="inline-flex items-center justify-center bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-medium px-3 py-2 rounded-md hover:bg-primary-100 dark:hover:bg-primary-900/50 transition-colors"
           >
             View details
