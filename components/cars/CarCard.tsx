@@ -48,42 +48,47 @@ export default function CarCard({ car, showFeatures = true }: CarCardProps) {
   };
   
   const brandBadgeStyle = getBrandStyle(car.brand);
+  const detailUrl = `/vehicles/${car.id}`;
 
   return (
     <div className="group relative bg-white dark:bg-secondary-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
       {/* Accent top border with gradient */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-400 to-primary-600"></div>
       
-      {/* Car Image */}
-      <div className="relative h-full overflow-hidden bg-gradient-to-b from-secondary-100 to-white dark:from-secondary-700 dark:to-secondary-800">
+      {/* Car Image - Clickable with larger size */}
+      <Link href={detailUrl} className="block relative h-64 overflow-hidden bg-gradient-to-b from-secondary-100 to-white dark:from-secondary-700 dark:to-secondary-800">
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-primary-500/10 transition-opacity duration-300"></div>
         <Image
           src={car.image}
           alt={car.name}
-          className="object-contain p-2 transform group-hover:scale-105 transition-transform duration-500"
+          height={100}
           width={500}
-          height={200}
+          className="object-cover p-0 w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={car.id.includes("mercedes") || car.id.includes("bentley")}
         />
         
         {/* Rating badge */}
-        <div className="absolute top-3 left-3 flex items-center bg-white/90 dark:bg-secondary-800/90 backdrop-blur-sm px-2 py-1 rounded-md shadow-sm">
-          <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400 mr-1" />
-          <span className="text-secondary-900 dark:text-white text-xs font-medium">{car.rating.toFixed(1)}</span>
-          <span className="text-secondary-500 text-xs ml-1">({car.reviews})</span>
+        <div className="absolute top-3 left-3 flex items-center bg-white/90 dark:bg-secondary-800/90 backdrop-blur-sm px-2.5 py-1.5 rounded-md shadow-sm">
+          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 mr-1.5" />
+          <span className="text-secondary-900 dark:text-white text-sm font-medium">{car.rating.toFixed(1)}</span>
+          <span className="text-secondary-500 text-xs ml-1.5">({car.reviews})</span>
         </div>
         
         {/* Brand badge */}
-        <div className={`absolute top-3 right-3 ${brandBadgeStyle} px-2 py-1 rounded-md text-xs font-medium`}>
+        <div className={`absolute top-3 right-3 ${brandBadgeStyle} px-2.5 py-1.5 rounded-md text-sm font-medium`}>
           {brandName}
         </div>
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="p-5 flex-1 flex flex-col">
-        {/* Car Name */}
-        <h3 className="text-lg font-semibold text-secondary-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-          {car.name}
-        </h3>
+        {/* Car Name - Clickable */}
+        <Link href={detailUrl} className="block">
+          <h3 className="text-xl font-semibold text-secondary-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+            {car.name}
+          </h3>
+        </Link>
         
         {/* Car Features - Optional */}
         {showFeatures && (
@@ -126,7 +131,7 @@ export default function CarCard({ car, showFeatures = true }: CarCardProps) {
             <span className="text-primary-600 dark:text-primary-400 text-sm font-medium">per day</span>
           </div>
           <Link
-            href={`/vehicles/${car.id}`}
+            href={detailUrl}
             className="inline-flex items-center justify-center bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-medium px-3 py-2 rounded-md hover:bg-primary-100 dark:hover:bg-primary-900/50 transition-colors"
           >
             View details
