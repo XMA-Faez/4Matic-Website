@@ -86,18 +86,10 @@ export default function Footer() {
               <Image
                 src="/logo.jpg"
                 alt="4MATIC Logo"
-                width={50}
-                height={50}
-                className="h-12 w-auto"
+                width={200}
+                height={200}
+                className="h-20 w-auto"
               />
-              <div className="ml-3">
-                <div className="font-bold text-xl text-secondary-900 dark:text-white">
-                  4MATIC
-                </div>
-                <div className="text-xs text-primary-600 dark:text-primary-400">
-                  LUXURY CAR RENTAL
-                </div>
-              </div>
             </div>
             <p className="text-secondary-600 dark:text-secondary-400 mb-6">
               Experience the epitome of luxury and performance with our premium

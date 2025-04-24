@@ -124,17 +124,17 @@ export default function ImageCarousel({ images, altText }: ImageCarouselProps) {
         </AnimatePresence>
 
         {/* Navigation buttons */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4">
+        <div className="absolute z-50 inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4">
           <button
             onClick={handlePrevious}
-            className="w-10 h-10 rounded-full bg-white/80 dark:bg-secondary-800/80 flex items-center justify-center text-secondary-700 dark:text-secondary-200 hover:bg-white dark:hover:bg-secondary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 z-10"
+            className="w-10 h-10 rounded-full bg-white/80 dark:bg-secondary-800/80 flex items-center justify-center text-secondary-700 dark:text-secondary-200 hover:bg-white dark:hover:bg-secondary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 z-50"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full bg-white/80 dark:bg-secondary-800/80 flex items-center justify-center text-secondary-700 dark:text-secondary-200 hover:bg-white dark:hover:bg-secondary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 z-10"
+            className="w-10 h-10 rounded-full bg-white/80 dark:bg-secondary-800/80 flex items-center justify-center text-secondary-700 dark:text-secondary-200 hover:bg-white dark:hover:bg-secondary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 z-50"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
