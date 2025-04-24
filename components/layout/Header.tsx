@@ -84,16 +84,10 @@ const Header: React.FC = () => {
               <Image
                 src="/logo.jpg" 
                 alt="4MATIC Logo"
-                width={40}
-                height={40}
-                className="h-10 w-auto"
+                width={100}
+                height={100}
+                className="h-14 w-auto"
               />
-              <span className={`ml-2 font-bold text-xl ${scrolled ? 'text-secondary-900 dark:text-white' : 'text-white'}`}>
-                4MATIC
-              </span>
-              <span className={`ml-1 text-xs ${scrolled ? 'text-primary-600 dark:text-primary-400' : 'text-primary-300'}`}>
-                LUXURY
-              </span>
             </div>
           </Link>
 

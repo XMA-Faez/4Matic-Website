@@ -95,7 +95,7 @@ export default function ImageCarousel({ images, altText }: ImageCarouselProps) {
   return (
     <>
       {/* Main Carousel */}
-      <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden bg-secondary-100 dark:bg-secondary-900">
+      <div className="relative w-full h-96 md:h-[550px] rounded-lg overflow-hidden bg-secondary-100 dark:bg-secondary-900">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentImageIndex}
