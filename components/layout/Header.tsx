@@ -44,20 +44,23 @@ const Header: React.FC = () => {
         { label: "Ferrari", href: "/vehicles?brand=ferrari" },
       ]
     },
-    // { label: "Services", href: "/services" },
     { label: "About Us", href: "/about-us" },
     { label: "Contact Us", href: "/contact-us" },
   ];
 
   // Handle scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+    // Check the scroll position immediately when component mounts
+    const checkInitialScroll = () => {
+      setScrolled(window.scrollY > 10);
     };
+    
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    // Run once on mount to set the correct initial state
+    checkInitialScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
