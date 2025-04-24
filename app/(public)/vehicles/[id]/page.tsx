@@ -17,7 +17,7 @@ interface VehicleDetailPageProps {
 export async function generateMetadata({
   params,
 }: VehicleDetailPageProps): Promise<Metadata> {
-  const car = await getCar(parseInt(params.id));
+  const car = await getCar(params.id);
 
   if (!car) {
     return {
@@ -27,15 +27,15 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${car.name} | 4MATIC Car Rental`,
-    description: `Rent the ${car.name}. ${car.passengers} passengers, ${car.doors} doors, ${car.transmission} transmission. Book now with 4MATIC Car Rental.`,
+    title: `${car.name} | 4MATIC Luxury Car Rental`,
+    description: `Rent the ${car.name}. ${car.passengers} passengers, ${car.doors} doors, ${car.transmission} transmission. Book now with 4MATIC Luxury Car Rental.`,
   };
 }
 
 export default async function VehicleDetailPage({
   params,
 }: VehicleDetailPageProps) {
-  const carId = parseInt(params.id);
+  const carId = params.id;
   const car = await getCar(carId);
 
   if (!car) {

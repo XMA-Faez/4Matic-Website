@@ -1,7 +1,7 @@
 // app/(public)/_components/home/HowItWorks.tsx
 import { CheckCircle, CalendarDays, Car } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { SiMercedes, SiAudi, SiBmw, SiToyota, SiHonda, SiVolkswagen } from "react-icons/si";
+import { SiMercedes, SiBentley, SiRollsroyce, SiBmw, SiLamborghini, SiPorsche } from "react-icons/si";
 
 interface Step {
   icon: React.ReactNode;
@@ -20,47 +20,47 @@ export default function HowItWorks() {
     {
       number: 1,
       icon: <CheckCircle className="text-primary-500 w-7 h-7" />,
-      title: "Choose Location",
-      description: "Select your pickup location and find available vehicles in your area"
+      title: "Select Your Vehicle",
+      description: "Browse our collection of premium and luxury vehicles to find the perfect match for your needs."
     },
     {
       number: 2,
       icon: <CalendarDays className="text-primary-500 w-7 h-7" />,
-      title: "Pick-up Date",
-      description: "Choose your rental dates and times that work best for your schedule"
+      title: "Choose Your Dates",
+      description: "Select your preferred pickup and return dates and times that suit your schedule."
     },
     {
       number: 3,
       icon: <Car className="text-primary-500 w-7 h-7" />,
-      title: "Book Your Car",
-      description: "Select your perfect vehicle and complete your booking in minutes"
+      title: "Enjoy Your Experience",
+      description: "Complete your booking and enjoy our premium delivery and concierge services."
     }
   ];
 
   const carClassName = "w-full h-20";
 
   const brands: Brand[] = [
+    { name: "Mercedes-Benz", logo: <SiMercedes className={carClassName} /> },
+    { name: "Bentley", logo: <SiBentley className={carClassName} /> },
+    { name: "Rolls-Royce", logo: <SiRollsroyce className={carClassName} /> },
     { name: "BMW", logo: <SiBmw className={carClassName} /> },
-    { name: "Audi", logo: <SiAudi className={carClassName} /> },
-    { name: "Mercedes", logo: <SiMercedes className={carClassName} /> },
-    { name: "Toyota", logo: <SiToyota className={carClassName} /> },
-    { name: "Honda", logo: <SiHonda className={carClassName} /> },
-    { name: "Volkswagen", logo: <SiVolkswagen className={carClassName} /> }
+    { name: "Lamborghini", logo: <SiLamborghini className={carClassName} /> },
+    { name: "Porsche", logo: <SiPorsche className={carClassName} /> }
   ];
 
   return (
-    <section className="py-24 bg-white dark:bg-secondary-900 overflow-hidden">
+    <section id="how-it-works" className="py-24 bg-white dark:bg-secondary-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
-            How It Works
+            Seamless Experience
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">
-            Rent Your Dream Car in Three Simple Steps
+            Luxury Made Simple in Three Steps
           </h2>
           <p className="text-secondary-600 dark:text-secondary-400 text-lg">
-            Our streamlined booking process makes it easy to reserve the perfect vehicle for your needs.
+            Our premium rental process is designed to be effortless, allowing you to focus on what matters—enjoying the extraordinary.
           </p>
         </div>
 
@@ -102,24 +102,26 @@ export default function HowItWorks() {
         {/* CTA Section */}
         <div className="flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-8 md:p-10 shadow-lg">
           <div className="mb-6 md:mb-0 text-white">
-            <h3 className="text-2xl font-bold mb-2">Ready to book your ride?</h3>
+            <h3 className="text-2xl font-bold mb-2">Ready to experience luxury?</h3>
             <p className="text-primary-100 max-w-md">
-              Experience the freedom of premium car rental with transparent pricing and no hidden fees.
+              Book your premium vehicle today and elevate your journey with our exceptional service and attention to detail.
             </p>
           </div>
           <Button 
             variant="secondary" 
             size="lg"
             className="bg-primary-100 text-primary-950 hover:bg-primary-200"
+            asLink
+            href="/vehicles"
           >
-            Browse All Vehicles
+            Browse Our Collection
           </Button>
         </div>
 
         {/* Brands Section */}
         <div className="mt-24">
           <h3 className="text-center text-xl font-semibold text-secondary-900 dark:text-white mb-8">
-            Trusted by Leading Auto Brands
+            The World's Finest Automobile Brands
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {brands.map((brand) => (

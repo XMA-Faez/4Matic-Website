@@ -18,21 +18,34 @@ const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
 
-  // Navigation items
+  // Updated navigation items for a luxury car rental service
   const navItems: NavItem[] = [
     { label: "Home", href: "/" },
     { 
-      label: "Vehicles", 
+      label: "Our Fleet", 
       href: "#",
       children: [
         { label: "Browse All", href: "/vehicles" },
-        { label: "SUVs", href: "/vehicles/suv" },
-        { label: "Luxury", href: "/vehicles/luxury" },
-        { label: "Economy", href: "/vehicles/economy" },
+        { label: "Luxury Sedans", href: "/vehicles?category=luxury" },
+        { label: "Sports Cars", href: "/vehicles?category=sports" },
+        { label: "Premium SUVs", href: "/vehicles?category=suv" },
+        { label: "Economy Cars", href: "/vehicles?category=economy" },
       ]
     },
-    { label: "How it Works", href: "/how-it-works" },
-    { label: "About Us", href: "/about" },
+    { 
+      label: "Brands", 
+      href: "#",
+      children: [
+        { label: "Mercedes-Benz", href: "/vehicles?brand=mercedes" },
+        { label: "Bentley", href: "/vehicles?brand=bentley" },
+        { label: "Rolls-Royce", href: "/vehicles?brand=rolls-royce" },
+        { label: "Range Rover", href: "/vehicles?brand=range-rover" },
+        { label: "Lamborghini", href: "/vehicles?brand=lamborghini" },
+        { label: "Ferrari", href: "/vehicles?brand=ferrari" },
+      ]
+    },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact-us" },
   ];
 
@@ -67,13 +80,21 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-10">
-            <Image
-              src="/logo.jpg" 
-              alt="4MATIC Logo"
-              width={130}
-              height={40}
-              className="h-10 w-auto"
-            />
+            <div className="flex items-center">
+              <Image
+                src="/logo.jpg" 
+                alt="4MATIC Logo"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
+              />
+              <span className={`ml-2 font-bold text-xl ${scrolled ? 'text-secondary-900 dark:text-white' : 'text-white'}`}>
+                4MATIC
+              </span>
+              <span className={`ml-1 text-xs ${scrolled ? 'text-primary-600 dark:text-primary-400' : 'text-primary-300'}`}>
+                LUXURY
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -130,7 +151,7 @@ const Header: React.FC = () => {
               Sign In
             </Button>
             <Button variant="primary" size="sm">
-              Sign Up
+              Register
             </Button>
           </div>
 
@@ -206,7 +227,7 @@ const Header: React.FC = () => {
               Sign In
             </Button>
             <Button variant="primary" fullWidth>
-              Create Account
+              Register
             </Button>
           </div>
         </div>

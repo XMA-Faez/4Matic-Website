@@ -4,7 +4,6 @@
 import { useState } from "react";
 import { Share2, Check, Copy, Facebook, Twitter, Linkedin, Link as LinkIcon } from "lucide-react";
 import { Car } from "@/types/car";
-import { shareVehicle, getVehicleUrl } from "../_utils/shareUtils";
 
 interface ShareButtonProps {
   car: Car;
@@ -14,23 +13,56 @@ export default function ShareButton({ car }: ShareButtonProps) {
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
   
+  // Format the brand name for display
+  const formatBrandName = (brand: string): string => {
+    switch (brand) {
+      case "mercedes":
+        return "Mercedes-Benz";
+      case "range-rover":
+        return "Range Rover";
+      case "rolls-royce":
+        return "Rolls-Royce";
+      default:
+        return brand.charAt(0).toUpperCase() + brand.slice(1);
+    }
+  };
+
+  // Get the brand name
+  const brandName = formatBrandName(car.brand);
+  
+  // Generate absolute URL for vehicle page
+  const getVehicleUrl = () => {
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+    return `${baseUrl}/vehicles/${car.id}`;
+  };
+  
   // Handle main share button click
   const handleShareClick = async (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent event bubbling
     
-    // If we're on a platform with Web Share API, use it directly
+    // If Web Share API is available, use it directly
     if (navigator.share) {
-      await shareVehicle(car);
+      try {
+        await navigator.share({
+          title: `4MATIC Luxury: ${brandName} ${car.name}`,
+          text: `Discover the exceptional ${brandName} ${car.name} starting at $${car.price}/day with 4MATIC Luxury Car Rental.`,
+          url: getVehicleUrl(),
+        });
+      } catch (error) {
+        // User may have canceled or sharing failed
+        console.error('Error sharing:', error);
+      }
     } else {
-      // Otherwise, show our custom share menu
+      // Otherwise, show custom share menu
       setShowShareOptions(!showShareOptions);
     }
   };
   
   // Share with specific platforms
   const shareWith = (platform: string) => {
-    const url = getVehicleUrl(car.id);
-    const text = `Check out the ${car.name} for $${car.price}/day on 4MATIC Car Rental!`;
+    const url = getVehicleUrl();
+    const title = `4MATIC Luxury: ${brandName} ${car.name}`;
+    const text = `Discover the exceptional ${brandName} ${car.name} starting at $${car.price}/day with 4MATIC Luxury Car Rental.`;
     
     switch (platform) {
       case 'facebook':
@@ -43,7 +75,7 @@ export default function ShareButton({ car }: ShareButtonProps) {
         window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
         break;
       case 'copy':
-        navigator.clipboard.writeText(url).then(() => {
+        navigator.clipboard.writeText(`${title}\n${text}\n${url}`).then(() => {
           setCopySuccess(true);
           setTimeout(() => setCopySuccess(false), 2000);
         });

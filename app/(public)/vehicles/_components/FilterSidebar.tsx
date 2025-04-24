@@ -13,27 +13,31 @@ import {
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 
-// Filter categories and options
+// Updated filter categories and options
 const categories = [
   { id: "all", label: "All Vehicles" },
   { id: "luxury", label: "Luxury" },
   { id: "sports", label: "Sports" },
   { id: "suv", label: "SUVs" },
   { id: "economy", label: "Economy" },
-  { id: "electric", label: "Electric" },
+  { id: "minivan", label: "Minivans" },
 ];
 
 const brands = [
   { id: "all", label: "All Brands" },
-  { id: "audi", label: "Audi" },
-  { id: "bmw", label: "BMW" },
   { id: "mercedes", label: "Mercedes-Benz" },
+  { id: "bentley", label: "Bentley" },
+  { id: "rolls-royce", label: "Rolls-Royce" },
+  { id: "range-rover", label: "Range Rover" },
   { id: "porsche", label: "Porsche" },
-  { id: "tesla", label: "Tesla" },
+  { id: "ferrari", label: "Ferrari" },
+  { id: "lamborghini", label: "Lamborghini" },
+  { id: "cadillac", label: "Cadillac" },
+  { id: "chevrolet", label: "Chevrolet" },
   { id: "toyota", label: "Toyota" },
-  { id: "honda", label: "Honda" },
-  { id: "ford", label: "Ford" },
-  { id: "volkswagen", label: "Volkswagen" },
+  { id: "kia", label: "Kia" },
+  { id: "hyundai", label: "Hyundai" },
+  { id: "fiat", label: "Fiat" },
 ];
 
 const passengerOptions = [
@@ -86,7 +90,7 @@ export default function FilterSidebar() {
   const currentCategory = searchParams.get("category") || "all";
   const currentBrand = searchParams.get("brand") || "all";
   const currentMinPrice = Number(searchParams.get("minPrice") || "0");
-  const currentMaxPrice = Number(searchParams.get("maxPrice") || "500");
+  const currentMaxPrice = Number(searchParams.get("maxPrice") || "600");
   const currentPassengers = searchParams.get("passengers") || "";
   
   // State for price range slider
@@ -127,7 +131,7 @@ export default function FilterSidebar() {
   // Clear all filters
   const clearFilters = () => {
     router.push('/vehicles');
-    setPriceRange([0, 500]);
+    setPriceRange([0, 600]);
   };
 
   // Handler for category selection
@@ -149,7 +153,7 @@ export default function FilterSidebar() {
   const handlePriceChangeEnd = (values: number[]) => {
     applyFilters({
       minPrice: values[0] === 0 ? null : values[0].toString(),
-      maxPrice: values[1] === 500 ? null : values[1].toString(),
+      maxPrice: values[1] === 600 ? null : values[1].toString(),
     });
   };
 
@@ -175,7 +179,7 @@ export default function FilterSidebar() {
         {(currentCategory !== "all" || 
           currentBrand !== "all" || 
           currentMinPrice > 0 || 
-          currentMaxPrice < 500 || 
+          currentMaxPrice < 600 || 
           currentPassengers) && (
           <Button
             variant="ghost"
@@ -246,7 +250,7 @@ export default function FilterSidebar() {
             isOpen={openSections.brand}
             onToggle={() => toggleSection("brand")}
           >
-            <div className="space-y-2">
+            <div className="space-y-2 max-h-60 overflow-y-auto">
               {brands.map((brand) => (
                 <div key={brand.id} className="flex items-center">
                   <input
@@ -276,15 +280,15 @@ export default function FilterSidebar() {
             <div className="px-2 pt-6 pb-2">
               <Slider
                 min={0}
-                max={500}
-                step={10}
+                max={600}
+                step={25}
                 value={priceRange}
                 onChange={handlePriceChange}
                 onChangeEnd={handlePriceChangeEnd}
               />
               <div className="flex justify-between mt-2 text-sm text-secondary-600 dark:text-secondary-400">
                 <span>${priceRange[0]}</span>
-                <span>${priceRange[1]}</span>
+                <span>${priceRange[1]}+</span>
               </div>
             </div>
           </FilterSection>
@@ -345,7 +349,7 @@ export default function FilterSidebar() {
           {(currentCategory !== "all" || 
             currentBrand !== "all" || 
             currentMinPrice > 0 || 
-            currentMaxPrice < 500 || 
+            currentMaxPrice < 600 || 
             currentPassengers) && (
             <Button
               variant="ghost"
@@ -390,7 +394,7 @@ export default function FilterSidebar() {
           isOpen={openSections.brand}
           onToggle={() => toggleSection("brand")}
         >
-          <div className="space-y-2">
+          <div className="space-y-2 max-h-60 overflow-y-auto">
             {brands.map((brand) => (
               <div key={brand.id} className="flex items-center">
                 <input
@@ -420,15 +424,15 @@ export default function FilterSidebar() {
           <div className="px-2 pt-6 pb-2">
             <Slider
               min={0}
-              max={500}
-              step={10}
+              max={600}
+              step={25}
               value={priceRange}
               onChange={handlePriceChange}
               onChangeEnd={handlePriceChangeEnd}
             />
             <div className="flex justify-between mt-2 text-sm text-secondary-600 dark:text-secondary-400">
               <span>${priceRange[0]}</span>
-              <span>${priceRange[1]}</span>
+              <span>${priceRange[1]}+</span>
             </div>
           </div>
         </FilterSection>

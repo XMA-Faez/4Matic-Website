@@ -13,6 +13,7 @@ interface Testimonial {
   position: string;
   location: string;
   image: string;
+  carRented?: string;
 }
 
 export default function Testimonials() {
@@ -24,29 +25,32 @@ export default function Testimonials() {
     {
       id: 1,
       rating: 5.0,
-      text: "The rental process was incredibly smooth from start to finish. The car was immaculate and performed flawlessly throughout our trip. Customer service was exceptional when we needed to extend our rental by an extra day.",
+      text: "The experience with 4MATIC Luxury exceeded all expectations. The Mercedes-Benz S-Class was immaculate, and the concierge service was exceptional—arranging everything from airport pickup to special requests. The level of professionalism and attention to detail sets them apart from any other luxury rental service I've used.",
       name: "James Wilson",
-      position: "Business Traveler",
+      position: "Executive Director",
       location: "New York, US",
       image: "/testimonials/person1.jpg",
+      carRented: "Mercedes-Benz S-Class"
     },
     {
       id: 2,
       rating: 4.9,
-      text: "I've used many car rental services before, but this one stands out for their attention to detail and customer care. The vehicle was exactly as advertised, and the pickup/drop-off process was the most efficient I've experienced.",
+      text: "Renting the Bentley Continental GT from 4MATIC Luxury transformed our anniversary weekend. From the moment we received the keys, we knew this was unlike any other rental experience. The vehicle was pristine, the booking process seamless, and the personalized service made us feel truly valued. Absolutely worth every penny.",
       name: "Sophie Chen",
-      position: "Frequent Traveler",
+      position: "Design Director",
       location: "San Francisco, US",
       image: "/testimonials/person2.jpg",
+      carRented: "Bentley Continental GT"
     },
     {
       id: 3,
-      rating: 4.8,
-      text: "As someone who values quality and reliability, I was thoroughly impressed with the vehicle condition and the overall rental experience. The online booking system was intuitive, and the staff was professional and courteous.",
+      rating: 5.0,
+      text: "My experience with the Rolls-Royce Cullinan rental was nothing short of spectacular. The vehicle arrived in perfect condition, and the delivery was precisely on time. The 24/7 concierge support was particularly impressive—they arranged luxury dining reservations that perfectly complemented our travel itinerary. This is how luxury service should be.",
       name: "Michael Rodriguez",
-      position: "Corporate Executive",
+      position: "CEO, Global Ventures",
       location: "Chicago, US",
       image: "/testimonials/person3.jpg",
+      carRented: "Rolls-Royce Cullinan"
     },
   ];
 
@@ -92,13 +96,13 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
-            Testimonials
+            Client Experiences
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">
-            What Our Customers Say
+            Exceptional Service, Memorable Journeys
           </h2>
           <p className="text-secondary-600 dark:text-secondary-400 text-lg">
-            Don&apos;t just take our word for it — hear from our satisfied customers
+            Discover what our distinguished clients have to say about their 4MATIC Luxury experience
           </p>
         </div>
 
@@ -149,6 +153,11 @@ export default function Testimonials() {
                 <p className="text-secondary-500 dark:text-secondary-400 text-xs mt-1">
                   {testimonials[currentIndex].location}
                 </p>
+                {testimonials[currentIndex].carRented && (
+                  <p className="text-secondary-600 dark:text-secondary-500 text-xs mt-2 italic">
+                    Vehicle: {testimonials[currentIndex].carRented}
+                  </p>
+                )}
               </div>
             </div>
             
@@ -178,15 +187,20 @@ export default function Testimonials() {
                       <h4 className="font-bold text-secondary-900 dark:text-white">
                         {testimonials[currentIndex].name}
                       </h4>
-                      <div className="flex items-center">
+                      <div className="flex flex-col md:flex-row md:items-center">
                         <span className="text-primary-600 dark:text-primary-400 text-sm">
                           {testimonials[currentIndex].position}
                         </span>
-                        <span className="mx-2 text-secondary-400">•</span>
+                        <span className="hidden md:block mx-2 text-secondary-400">•</span>
                         <span className="text-secondary-500 dark:text-secondary-400 text-sm">
                           {testimonials[currentIndex].location}
                         </span>
                       </div>
+                      {testimonials[currentIndex].carRented && (
+                        <span className="text-secondary-600 dark:text-secondary-500 text-xs italic">
+                          Vehicle: {testimonials[currentIndex].carRented}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>

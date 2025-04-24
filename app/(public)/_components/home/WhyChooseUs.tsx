@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
 
   // Transform the scrollYProgress (0-1) to X translation (-100px to 200px)
   // Start with car slightly off-screen to the left (-100px) and move it right
-  const carX = useTransform(scrollYProgress, [0, 1], [-200, 0]);
+  const carX = useTransform(scrollYProgress, [0, 1], ["-50%", "-5%"]);
 
   return (
     <div

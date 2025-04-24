@@ -17,7 +17,8 @@ import {
   Timer,
   MapPin,
   Car,
-  Battery
+  Battery,
+  Award
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +37,22 @@ interface VehicleDetailsProps {
 export default function VehicleDetails({ car }: VehicleDetailsProps) {
   const [activeTab, setActiveTab] = useState<'description' | 'specs'>('description');
   
-  // This is now handled by the WhatsappBooking component
+  // Format the brand name for display
+  const formatBrandName = (brand: string): string => {
+    switch (brand) {
+      case "mercedes":
+        return "Mercedes-Benz";
+      case "range-rover":
+        return "Range Rover";
+      case "rolls-royce":
+        return "Rolls-Royce";
+      default:
+        return brand.charAt(0).toUpperCase() + brand.slice(1);
+    }
+  };
+
+  // Get the brand name
+  const brandName = formatBrandName(car.brand);
 
   // Create an array of specification items for display
   const specificationItems = [
@@ -121,6 +137,9 @@ export default function VehicleDetails({ car }: VehicleDetailsProps) {
             <div className="bg-white dark:bg-secondary-900 rounded-xl shadow-sm p-6 border border-secondary-200 dark:border-secondary-800">
               <div className="flex justify-between items-start mb-4">
                 <div>
+                  <div className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-primary-100 dark:bg-primary-900/40 text-primary-800 dark:text-primary-300 mb-2">
+                    {brandName}
+                  </div>
                   <h1 className="text-2xl font-bold text-secondary-900 dark:text-white mb-2">
                     {car.name}
                   </h1>
@@ -159,7 +178,7 @@ export default function VehicleDetails({ car }: VehicleDetailsProps) {
                 <div className="flex items-center">
                   <Fuel className="w-5 h-5 text-primary-500 dark:text-primary-400 mr-2" />
                   <span className="text-secondary-700 dark:text-secondary-300">
-                    {car.airConditioning ? "A/C" : "No A/C"}
+                    {car.specs?.fuelType || "Gasoline"}
                   </span>
                 </div>
               </div>
@@ -181,14 +200,6 @@ export default function VehicleDetails({ car }: VehicleDetailsProps) {
                 
                 <div className="space-y-4 mt-6">
                   <WhatsappBooking car={car} />
-                  
-                  <Button
-                    variant="outline"
-                    fullWidth
-                    icon={<Repeat className="w-5 h-5" />}
-                  >
-                    Compare Vehicles
-                  </Button>
                 </div>
               </div>
               
@@ -199,9 +210,9 @@ export default function VehicleDetails({ car }: VehicleDetailsProps) {
                     <Clock className="w-4 h-4" />
                   </div>
                   <div className="text-secondary-700 dark:text-secondary-300">
-                    <strong>24/7 Customer Support</strong>
+                    <strong>24/7 Concierge Service</strong>
                     <p className="text-secondary-600 dark:text-secondary-400 text-xs mt-0.5">
-                      Assistance whenever you need it
+                      Premium assistance whenever you need it
                     </p>
                   </div>
                 </div>
@@ -213,19 +224,19 @@ export default function VehicleDetails({ car }: VehicleDetailsProps) {
                   <div className="text-secondary-700 dark:text-secondary-300">
                     <strong>Comprehensive Insurance</strong>
                     <p className="text-secondary-600 dark:text-secondary-400 text-xs mt-0.5">
-                      All rentals include basic insurance
+                      All rentals include premium coverage
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
                   <div className="mt-0.5 mr-2 text-primary-500 dark:text-primary-400">
-                    <Zap className="w-4 h-4" />
+                    <Award className="w-4 h-4" />
                   </div>
                   <div className="text-secondary-700 dark:text-secondary-300">
-                    <strong>Instant Confirmation</strong>
+                    <strong>Exclusive Experience</strong>
                     <p className="text-secondary-600 dark:text-secondary-400 text-xs mt-0.5">
-                      Booking confirmed immediately via WhatsApp
+                      Personalized service and special amenities
                     </p>
                   </div>
                 </div>

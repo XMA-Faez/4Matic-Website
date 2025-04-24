@@ -7,13 +7,10 @@ import SectionHeader from "@/components/ui/SectionHeader";
 
 interface RelatedVehiclesProps {
   cars: Car[];
-  currentCarId: number;
+  currentCarId: string;
 }
 
-export default function RelatedVehicles({
-  cars,
-  currentCarId,
-}: RelatedVehiclesProps) {
+export default function RelatedVehicles({ cars }: RelatedVehiclesProps) {
   // If no related cars, don't render this section
   if (!cars || cars.length === 0) {
     return null;

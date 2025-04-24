@@ -14,7 +14,7 @@ export interface CarSpecs {
 }
 
 export interface Car {
-  id: number;
+  id: string; // Changed from number to string for meaningful IDs
   name: string;
   image: string;
   images?: string[]; // Array of image URLs for the car gallery

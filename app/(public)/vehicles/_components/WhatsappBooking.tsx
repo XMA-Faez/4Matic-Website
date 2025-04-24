@@ -11,24 +11,45 @@ interface WhatsappBookingProps {
 }
 
 export default function WhatsappBooking({ car, className = "" }: WhatsappBookingProps) {
+  // Format the brand name for display
+  const formatBrandName = (brand: string): string => {
+    switch (brand) {
+      case "mercedes":
+        return "Mercedes-Benz";
+      case "range-rover":
+        return "Range Rover";
+      case "rolls-royce":
+        return "Rolls-Royce";
+      default:
+        return brand.charAt(0).toUpperCase() + brand.slice(1);
+    }
+  };
+
+  // Get the brand name
+  const brandName = formatBrandName(car.brand);
+
   // Function to generate the WhatsApp link with template message
   const handleWhatsAppBooking = () => {
     // The phone number should be replaced with your actual business phone number
     // Format: Country code without + and then the number, e.g., 1XXXXXXXXXX for US
     const phoneNumber = "1234567890"; 
     
-    // Create a template message with the car details
+    // Create a template message with the car details and luxury service offering
     const message = `
-Hello! I'm interested in renting the ${car.name}.
+Hello 4MATIC Luxury Car Rental,
+
+I'm interested in booking the ${brandName} ${car.name}.
 
 *Vehicle Details:*
-- ID: ${car.id}
-- Price: $${car.price}/day
-- Passengers: ${car.passengers}
-- Transmission: ${car.transmission}
-- Doors: ${car.doors}
+• Vehicle ID: ${car.id}
+• Daily Rate: $${car.price}
+• Category: ${car.category.charAt(0).toUpperCase() + car.category.slice(1)}
+• Passengers: ${car.passengers}
+• Transmission: ${car.transmission}
 
-Please let me know about availability and the booking process.
+Please provide information about availability and any premium services or amenities included with this vehicle rental.
+
+Thank you.
     `.trim();
     
     // Encode the message for the URL
@@ -50,7 +71,7 @@ Please let me know about availability and the booking process.
       onClick={handleWhatsAppBooking}
       className={className}
     >
-      Book via WhatsApp
+      Request Reservation
     </Button>
   );
 }

@@ -2,45 +2,79 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Star, Users, Fuel, Gauge, DoorOpen, ArrowRight } from "lucide-react";
-
-interface Car {
-  id: number;
-  name: string;
-  image: string;
-  rating: number;
-  reviews: number;
-  passengers: number;
-  airConditioning: boolean;
-  doors: number;
-  transmission: string;
-  price: number;
-}
+import { Car } from "@/types/car";
 
 interface CarCardProps {
   car: Car;
+  showFeatures?: boolean;
 }
 
-export default function CarCard({ car }: CarCardProps) {
+export default function CarCard({ car, showFeatures = true }: CarCardProps) {
+  // Format the brand name for display
+  const formatBrandName = (brand: string): string => {
+    switch (brand) {
+      case "mercedes":
+        return "Mercedes-Benz";
+      case "range-rover":
+        return "Range Rover";
+      case "rolls-royce":
+        return "Rolls-Royce";
+      default:
+        return brand.charAt(0).toUpperCase() + brand.slice(1);
+    }
+  };
+
+  // Get the brand name and badge styling
+  const brandName = formatBrandName(car.brand);
+  const getBrandStyle = (brand: string): string => {
+    switch (brand) {
+      case "mercedes":
+        return "bg-secondary-100 text-secondary-800";
+      case "bentley":
+        return "bg-green-50 text-green-800";
+      case "rolls-royce":
+        return "bg-purple-50 text-purple-800";
+      case "range-rover":
+        return "bg-green-50 text-green-800";
+      case "porsche":
+        return "bg-red-50 text-red-800";
+      case "ferrari":
+        return "bg-red-50 text-red-800";
+      case "lamborghini":
+        return "bg-yellow-50 text-yellow-800";
+      default:
+        return "bg-blue-50 text-blue-800";
+    }
+  };
+  
+  const brandBadgeStyle = getBrandStyle(car.brand);
+
   return (
     <div className="group relative bg-white dark:bg-secondary-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
       {/* Accent top border with gradient */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-400 to-primary-600"></div>
       
       {/* Car Image */}
-      <div className="relative h-48 overflow-hidden bg-gradient-to-b from-secondary-100 to-white dark:from-secondary-700 dark:to-secondary-800">
+      <div className="relative h-full overflow-hidden bg-gradient-to-b from-secondary-100 to-white dark:from-secondary-700 dark:to-secondary-800">
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-primary-500/10 transition-opacity duration-300"></div>
         <Image
           src={car.image}
           alt={car.name}
-          fill
-          className="object-contain p-6 transform group-hover:scale-105 transition-transform duration-500"
+          className="object-contain p-2 transform group-hover:scale-105 transition-transform duration-500"
+          width={500}
+          height={200}
         />
         
         {/* Rating badge */}
         <div className="absolute top-3 left-3 flex items-center bg-white/90 dark:bg-secondary-800/90 backdrop-blur-sm px-2 py-1 rounded-md shadow-sm">
           <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400 mr-1" />
-          <span className="text-secondary-900 dark:text-white text-xs font-medium">{car.rating}</span>
+          <span className="text-secondary-900 dark:text-white text-xs font-medium">{car.rating.toFixed(1)}</span>
           <span className="text-secondary-500 text-xs ml-1">({car.reviews})</span>
+        </div>
+        
+        {/* Brand badge */}
+        <div className={`absolute top-3 right-3 ${brandBadgeStyle} px-2 py-1 rounded-md text-xs font-medium`}>
+          {brandName}
         </div>
       </div>
 
@@ -51,24 +85,35 @@ export default function CarCard({ car }: CarCardProps) {
           {car.name}
         </h3>
         
-        {/* Car Features */}
-        <div className="grid grid-cols-2 gap-y-3 gap-x-2 mt-3 mb-4">
-          <div className="flex items-center">
-            <Users className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
-            <span className="text-secondary-700 dark:text-secondary-300 text-sm">{car.passengers} Seats</span>
+        {/* Car Features - Optional */}
+        {showFeatures && (
+          <div className="grid grid-cols-2 gap-y-3 gap-x-2 mt-3 mb-4">
+            <div className="flex items-center">
+              <Users className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
+              <span className="text-secondary-700 dark:text-secondary-300 text-sm">{car.passengers} Seats</span>
+            </div>
+            <div className="flex items-center">
+              <DoorOpen className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
+              <span className="text-secondary-700 dark:text-secondary-300 text-sm">{car.doors} Doors</span>
+            </div>
+            <div className="flex items-center">
+              <Gauge className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
+              <span className="text-secondary-700 dark:text-secondary-300 text-sm">{car.transmission}</span>
+            </div>
+            <div className="flex items-center">
+              <Fuel className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
+              <span className="text-secondary-700 dark:text-secondary-300 text-sm">
+                {car.specs?.fuelType || "A/C"}
+              </span>
+            </div>
           </div>
-          <div className="flex items-center">
-            <DoorOpen className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
-            <span className="text-secondary-700 dark:text-secondary-300 text-sm">{car.doors} Doors</span>
-          </div>
-          <div className="flex items-center">
-            <Gauge className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
-            <span className="text-secondary-700 dark:text-secondary-300 text-sm">{car.transmission}</span>
-          </div>
-          <div className="flex items-center">
-            <Fuel className="w-4 h-4 text-secondary-500 dark:text-secondary-400 mr-2 flex-shrink-0" />
-            <span className="text-secondary-700 dark:text-secondary-300 text-sm">A/C</span>
-          </div>
+        )}
+        
+        {/* Category tag */}
+        <div className="mb-4">
+          <span className="inline-flex px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900/40 text-primary-800 dark:text-primary-300">
+            {car.category.charAt(0).toUpperCase() + car.category.slice(1)}
+          </span>
         </div>
         
         {/* Spacer */}
