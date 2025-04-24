@@ -42,7 +42,7 @@ I'm interested in booking the ${brandName} ${car.name}.
 
 *Vehicle Details:*
 • Vehicle ID: ${car.id}
-• Daily Rate: $${car.price}
+• Daily Rate: AED ${car.price}
 • Category: ${car.category.charAt(0).toUpperCase() + car.category.slice(1)}
 • Passengers: ${car.passengers}
 • Transmission: ${car.transmission}

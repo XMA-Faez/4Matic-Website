@@ -143,7 +143,7 @@ export default function CarCard({ car, showFeatures = true }: CarCardProps) {
         <div className="flex justify-between items-center pt-4 mt-2 border-t border-secondary-200 dark:border-secondary-800">
           <div>
             <span className="block text-2xl font-bold text-secondary-900 dark:text-white">
-              ${car.price}
+              AED {car.price}
             </span>
             <span className="text-primary-600 dark:text-primary-400 text-sm font-medium">
               per day

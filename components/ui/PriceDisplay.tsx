@@ -12,7 +12,7 @@ interface PriceDisplayProps {
 
 export default function PriceDisplay({
   amount,
-  currency = 'USD',
+  currency = 'AED',
   period,
   size = 'md',
   showDecimal = true,
@@ -20,7 +20,7 @@ export default function PriceDisplay({
 }: PriceDisplayProps) {
   // Format the price
   const formattedPrice = useMemo(() => {
-    const formatter = new Intl.NumberFormat('en-US', {
+    const formatter = new Intl.NumberFormat('en-AE', {
       style: 'currency',
       currency: currency,
       minimumFractionDigits: showDecimal ? 2 : 0,

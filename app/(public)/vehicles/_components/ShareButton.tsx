@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { Share2, Check, Copy, Facebook, Twitter, Linkedin, Link as LinkIcon } from "lucide-react";
+import { Share2, Check, Facebook, Twitter, Linkedin, Link as LinkIcon } from "lucide-react";
 import { Car } from "@/types/car";
 
 interface ShareButtonProps {
@@ -45,7 +45,7 @@ export default function ShareButton({ car }: ShareButtonProps) {
       try {
         await navigator.share({
           title: `4MATIC Luxury: ${brandName} ${car.name}`,
-          text: `Discover the exceptional ${brandName} ${car.name} starting at $${car.price}/day with 4MATIC Luxury Car Rental.`,
+          text: `Discover the exceptional ${brandName} ${car.name} starting at AED ${car.price}/day with 4MATIC Luxury Car Rental.`,
           url: getVehicleUrl(),
         });
       } catch (error) {
@@ -62,7 +62,7 @@ export default function ShareButton({ car }: ShareButtonProps) {
   const shareWith = (platform: string) => {
     const url = getVehicleUrl();
     const title = `4MATIC Luxury: ${brandName} ${car.name}`;
-    const text = `Discover the exceptional ${brandName} ${car.name} starting at $${car.price}/day with 4MATIC Luxury Car Rental.`;
+    const text = `Discover the exceptional ${brandName} ${car.name} starting at AED ${car.price}/day with 4MATIC Luxury Car Rental.`;
     
     switch (platform) {
       case 'facebook':

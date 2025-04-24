@@ -12,7 +12,6 @@ import {
   Zap, 
   Shield, 
   ChevronRight,
-  Repeat,
   BarChart3,
   Timer,
   MapPin,
@@ -20,10 +19,8 @@ import {
   Battery,
   Award
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Car as CarType } from "@/types/car";
-import Button from "@/components/ui/Button";
 import ImageCarousel from "./ImageCarousel";
 import StarRating from "@/components/ui/StarRating";
 import PriceDisplay from "@/components/ui/PriceDisplay";
@@ -188,13 +185,13 @@ export default function VehicleDetails({ car }: VehicleDetailsProps) {
                 <div className="flex items-end justify-between mb-2">
                   <PriceDisplay 
                     amount={car.price} 
-                    currency="USD" 
+                    currency="AED" 
                     period="day" 
                     size="xl" 
                     className="text-primary-600 dark:text-primary-400"
                   />
                   <div className="text-secondary-600 dark:text-secondary-400 text-sm">
-                    +$20 booking fee
+                    +AED 75 booking fee
                   </div>
                 </div>
                 
