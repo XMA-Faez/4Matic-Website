@@ -10,9 +10,6 @@ import {
   Instagram,
   Linkedin,
   ArrowRight,
-  CreditCard,
-  ShieldCheck,
-  Clock,
   Award,
 } from "lucide-react";
 
@@ -21,11 +18,11 @@ export default function Footer() {
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
     { name: "Our Fleet", href: "/vehicles" },
-    { name: "Services", href: "/services" },
+    // { name: "Services", href: "/services" },
     { name: "Locations", href: "/locations" },
-    { name: "Contact", href: "/contact-us" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact-us" },
   ];
 
   const vehicleTypes = [

@@ -44,9 +44,9 @@ const Header: React.FC = () => {
         { label: "Ferrari", href: "/vehicles?brand=ferrari" },
       ]
     },
-    { label: "Services", href: "/services" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact-us" },
+    // { label: "Services", href: "/services" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Contact Us", href: "/contact-us" },
   ];
 
   // Handle scroll effect
