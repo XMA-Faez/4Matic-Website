@@ -328,6 +328,7 @@ export const carsDatabase: Car[] = [
     name: "Porsche 911 Carrera GTS",
     image: "/cars/porsche-911-carrera-gts-blue.jpg",
     images: [
+      "/IMG_7490.JPG",
       "/cars/porsche-911-carrera-gts-blue.jpg",
       "/cars/porsche-911-targa-black.jpg",
       "/cars/porsche-911-targa-green.jpg",
