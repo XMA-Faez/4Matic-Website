@@ -22,7 +22,7 @@ export default function WhatsappBooking({
   const handleWhatsAppBooking = () => {
     // The phone number should be replaced with your actual business phone number
     // Format: Country code without + and then the number, e.g., 1XXXXXXXXXX for US
-    const phoneNumber = "1234567890";
+    const phoneNumber = "+971563626000";
 
     // Create a template message with the car details and luxury service offering
     const message = `
