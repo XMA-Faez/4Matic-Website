@@ -145,9 +145,9 @@ const Header: React.FC = () => {
               size="sm"
               icon={<Phone className="h-4 w-4" />}
               asLink
-              href="tel:045582435"
+              href="tel:+971569700700"
             >
-              04 558 2435
+              056 970 0700
             </Button>
           </div>
 
@@ -224,9 +224,9 @@ const Header: React.FC = () => {
               fullWidth
               icon={<Phone className="h-5 w-5" />}
               asLink
-              href="tel:045582435"
+              href="tel:+971569700700"
             >
-              04 558 2435
+              056 970 0700
             </Button>
           </div>
         </div>

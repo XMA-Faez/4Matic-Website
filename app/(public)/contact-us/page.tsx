@@ -20,7 +20,7 @@ const location = {
   id: "main-office",
   name: "Dubai Office",
   address: "Business Bay Marquise Square Tower Shop 04, Dubai, UAE",
-  phone: "04 558 2435",
+  phone: "+971 56 970 0700",
   email: "info@4maticrental.com",
   hours: "Mon-Fri: 9am-8pm | Sat-Sun: 10am-6pm",
   coordinates: { lat: 25.186, lng: 55.280 } // Dubai Business Bay coordinates
@@ -69,8 +69,8 @@ export default function ContactUsPage() {
                   </div>
                   <h3 className="text-white text-lg font-semibold mb-2">Call Us</h3>
                   <p className="text-secondary-300 mb-3">Speak directly with our team</p>
-                  <a href="tel:045582435" className="text-primary-400 font-medium hover:text-primary-300">
-                    04 558 2435
+                  <a href="tel:+971569700700" className="text-primary-400 font-medium hover:text-primary-300">
+                    +971569700700
                   </a>
                 </div>
                 

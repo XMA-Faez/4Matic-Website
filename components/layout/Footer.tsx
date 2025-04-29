@@ -86,7 +86,7 @@ export default function Footer() {
               <div className="flex items-start">
                 <Phone className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3" />
                 <span className="text-secondary-600 dark:text-secondary-400">
-                  04 558 2435
+                  056 970 0700
                 </span>
               </div>
               <div className="flex items-start">
