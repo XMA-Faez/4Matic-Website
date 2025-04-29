@@ -2,6 +2,7 @@
 "use server";
 
 import { carsDatabase } from "./car-database";
+import { MAX_PRICE } from "./car-config";
 
 interface GetCarsParams {
   category?: string;
@@ -19,7 +20,7 @@ export async function getCars(params: GetCarsParams) {
     category, 
     brand, 
     minPrice = 0, 
-    maxPrice = 1000, // Increased for luxury vehicles
+    maxPrice = MAX_PRICE, // Use MAX_PRICE from config
     passengers, 
     sort = "recommended", 
     page = 1, 
@@ -65,7 +66,8 @@ export async function getCars(params: GetCarsParams) {
         return b.rating - a.rating;
       default:
         // Default "recommended" sort - could be a weighted score in a real app
-        return b.rating * 0.7 + (1 - b.price / 600) * 0.3 - (a.rating * 0.7 + (1 - a.price / 600) * 0.3);
+        // Modified to use MAX_PRICE instead of hardcoded value
+        return b.rating * 0.7 + (1 - b.price / MAX_PRICE) * 0.3 - (a.rating * 0.7 + (1 - a.price / MAX_PRICE) * 0.3);
     }
   });
   

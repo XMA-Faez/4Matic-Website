@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star, Users, Fuel, Gauge, DoorOpen, ArrowRight } from "lucide-react";
 import { Car } from "@/types/car";
+import { formatBrandName, getBrandStyle } from "@/lib/formatters";
 
 interface CarCardProps {
   car: Car;
@@ -10,43 +11,8 @@ interface CarCardProps {
 }
 
 export default function CarCard({ car, showFeatures = true }: CarCardProps) {
-  // Format the brand name for display
-  const formatBrandName = (brand: string): string => {
-    switch (brand) {
-      case "mercedes":
-        return "Mercedes-Benz";
-      case "range-rover":
-        return "Range Rover";
-      case "rolls-royce":
-        return "Rolls-Royce";
-      default:
-        return brand.charAt(0).toUpperCase() + brand.slice(1);
-    }
-  };
-
   // Get the brand name and badge styling
   const brandName = formatBrandName(car.brand);
-  const getBrandStyle = (brand: string): string => {
-    switch (brand) {
-      case "mercedes":
-        return "bg-secondary-100 text-secondary-800";
-      case "bentley":
-        return "bg-green-50 text-green-800";
-      case "rolls-royce":
-        return "bg-purple-50 text-purple-800";
-      case "range-rover":
-        return "bg-green-50 text-green-800";
-      case "porsche":
-        return "bg-red-50 text-red-800";
-      case "ferrari":
-        return "bg-red-50 text-red-800";
-      case "lamborghini":
-        return "bg-yellow-50 text-yellow-800";
-      default:
-        return "bg-blue-50 text-blue-800";
-    }
-  };
-
   const brandBadgeStyle = getBrandStyle(car.brand);
   const detailUrl = `/vehicles/${car.id}`;
 

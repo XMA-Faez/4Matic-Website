@@ -1,48 +1,44 @@
 // components/ui/PriceDisplay.tsx
-import { useMemo } from 'react';
+import { useMemo } from "react";
+import { formatCurrency } from "@/lib/formatters";
 
 interface PriceDisplayProps {
   amount: number;
   currency?: string;
   period?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: "sm" | "md" | "lg" | "xl";
   showDecimal?: boolean;
   className?: string;
 }
 
 export default function PriceDisplay({
   amount,
-  currency = 'AED',
+  currency = "AED",
   period,
-  size = 'md',
-  showDecimal = true,
-  className = ''
+  size = "md",
+  showDecimal = false,
+  className = "",
 }: PriceDisplayProps) {
-  // Format the price
+  // Format the price using our formatter utility
   const formattedPrice = useMemo(() => {
-    const formatter = new Intl.NumberFormat('en-AE', {
-      style: 'currency',
-      currency: currency,
-      minimumFractionDigits: showDecimal ? 2 : 0,
-      maximumFractionDigits: showDecimal ? 2 : 0,
-    });
-    
-    return formatter.format(amount);
+    return formatCurrency(amount, currency, showDecimal);
   }, [amount, currency, showDecimal]);
-  
+
   // Size variants
   const sizes = {
-    sm: 'text-lg',
-    md: 'text-2xl',
-    lg: 'text-3xl',
-    xl: 'text-4xl'
+    sm: "text-lg",
+    md: "text-2xl",
+    lg: "text-3xl",
+    xl: "text-4xl",
   };
-  
+
   return (
     <div className={`font-bold ${sizes[size]} ${className}`}>
-      <span className="text-white">{formattedPrice}</span>
+      <span>{formattedPrice}</span>
       {period && (
-        <span className="text-secondary-400 text-sm font-normal ml-1">/{period}</span>
+        <span className="text-secondary-400 text-sm font-normal ml-1">
+          /{period}
+        </span>
       )}
     </div>
   );

@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import Button from "../ui/Button";
 
 interface NavItem {
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
         { label: "Ferrari", href: "/vehicles?brand=ferrari" },
       ]
     },
-    { label: "About Us", href: "/about-us" },
+    // { label: "About Us", href: "/about-us" },
     { label: "Contact Us", href: "/contact-us" },
   ];
 
@@ -85,11 +85,11 @@ const Header: React.FC = () => {
           <Link href="/" className="relative z-10">
             <div className="flex items-center">
               <Image
-                src="/logo.jpg" 
+                src="/4MAticlogo.png" 
                 alt="4MATIC Logo"
                 width={100}
                 height={100}
-                className="h-14 w-auto"
+                className="logo-image"
               />
             </div>
           </Link>
@@ -138,17 +138,16 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Authentication Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Contact Button - Replacing Authentication Buttons */}
+          <div className="hidden md:flex items-center">
             <Button 
-              variant="ghost" 
+              variant="primary" 
               size="sm"
-              className={scrolled ? '' : 'text-white hover:bg-white/10'}
+              icon={<Phone className="h-4 w-4" />}
+              asLink
+              href="tel:045582435"
             >
-              Sign In
-            </Button>
-            <Button variant="primary" size="sm">
-              Register
+              04 558 2435
             </Button>
           </div>
 
@@ -219,12 +218,15 @@ const Header: React.FC = () => {
             ))}
           </nav>
           
-          <div className="mt-auto space-y-4">
-            <Button variant="outline" fullWidth>
-              Sign In
-            </Button>
-            <Button variant="primary" fullWidth>
-              Register
+          <div className="mt-auto">
+            <Button 
+              variant="primary" 
+              fullWidth
+              icon={<Phone className="h-5 w-5" />}
+              asLink
+              href="tel:045582435"
+            >
+              04 558 2435
             </Button>
           </div>
         </div>

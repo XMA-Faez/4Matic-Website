@@ -38,6 +38,12 @@ const brands = [
   { id: "kia", label: "Kia" },
   { id: "hyundai", label: "Hyundai" },
   { id: "fiat", label: "Fiat" },
+  { id: "bmw", label: "BMW" },
+  { id: "audi", label: "Audi" },
+  { id: "gmc", label: "GMC" },
+  { id: "nissan", label: "Nissan" },
+  { id: "mini", label: "MINI" },
+  { id: "mitsubishi", label: "Mitsubishi" },
 ];
 
 const passengerOptions = [
@@ -46,6 +52,9 @@ const passengerOptions = [
   { value: "5", label: "5 Passengers" },
   { value: "6", label: "6+ Passengers" },
 ];
+
+// Increased maximum price to 5000 AED
+const MAX_PRICE = 5000;
 
 interface FilterSectionProps {
   title: string;
@@ -77,10 +86,10 @@ export default function FilterSidebar() {
   
   // Track which filter sections are open
   const [openSections, setOpenSections] = useState({
-    category: true,
-    brand: true,
-    price: true,
-    passengers: true,
+    category: false,
+    brand: false,
+    price: false,
+    passengers: false,
   });
   
   // For mobile filter visibility
@@ -90,7 +99,7 @@ export default function FilterSidebar() {
   const currentCategory = searchParams.get("category") || "all";
   const currentBrand = searchParams.get("brand") || "all";
   const currentMinPrice = Number(searchParams.get("minPrice") || "0");
-  const currentMaxPrice = Number(searchParams.get("maxPrice") || "600");
+  const currentMaxPrice = Number(searchParams.get("maxPrice") || MAX_PRICE.toString());
   const currentPassengers = searchParams.get("passengers") || "";
   
   // State for price range slider
@@ -131,7 +140,7 @@ export default function FilterSidebar() {
   // Clear all filters
   const clearFilters = () => {
     router.push('/vehicles');
-    setPriceRange([0, 600]);
+    setPriceRange([0, MAX_PRICE]);
   };
 
   // Handler for category selection
@@ -153,13 +162,18 @@ export default function FilterSidebar() {
   const handlePriceChangeEnd = (values: number[]) => {
     applyFilters({
       minPrice: values[0] === 0 ? null : values[0].toString(),
-      maxPrice: values[1] === 600 ? null : values[1].toString(),
+      maxPrice: values[1] === MAX_PRICE ? null : values[1].toString(),
     });
   };
 
   // Handler for passenger selection
   const handlePassengerChange = (passengers: string) => {
     applyFilters({ passengers: passengers || null });
+  };
+
+  // Helper function to format price with AED
+  const formatPrice = (price: number): string => {
+    return `AED ${price}`;
   };
 
   return (
@@ -179,7 +193,7 @@ export default function FilterSidebar() {
         {(currentCategory !== "all" || 
           currentBrand !== "all" || 
           currentMinPrice > 0 || 
-          currentMaxPrice < 600 || 
+          currentMaxPrice < MAX_PRICE || 
           currentPassengers) && (
           <Button
             variant="ghost"
@@ -280,15 +294,15 @@ export default function FilterSidebar() {
             <div className="px-2 pt-6 pb-2">
               <Slider
                 min={0}
-                max={600}
-                step={25}
+                max={MAX_PRICE}
+                step={100}
                 value={priceRange}
                 onChange={handlePriceChange}
                 onChangeEnd={handlePriceChangeEnd}
               />
               <div className="flex justify-between mt-2 text-sm text-secondary-600 dark:text-secondary-400">
-                <span>${priceRange[0]}</span>
-                <span>${priceRange[1]}+</span>
+                <span>{formatPrice(priceRange[0])}</span>
+                <span>{formatPrice(priceRange[1])}+</span>
               </div>
             </div>
           </FilterSection>
@@ -349,7 +363,7 @@ export default function FilterSidebar() {
           {(currentCategory !== "all" || 
             currentBrand !== "all" || 
             currentMinPrice > 0 || 
-            currentMaxPrice < 600 || 
+            currentMaxPrice < MAX_PRICE || 
             currentPassengers) && (
             <Button
               variant="ghost"
@@ -424,15 +438,15 @@ export default function FilterSidebar() {
           <div className="px-2 pt-6 pb-2">
             <Slider
               min={0}
-              max={600}
-              step={25}
+              max={MAX_PRICE}
+              step={100}
               value={priceRange}
               onChange={handlePriceChange}
               onChangeEnd={handlePriceChangeEnd}
             />
             <div className="flex justify-between mt-2 text-sm text-secondary-600 dark:text-secondary-400">
-              <span>${priceRange[0]}</span>
-              <span>${priceRange[1]}+</span>
+              <span>{formatPrice(priceRange[0])}</span>
+              <span>{formatPrice(priceRange[1])}+</span>
             </div>
           </div>
         </FilterSection>

@@ -4,27 +4,17 @@
 import { Phone } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { Car } from "@/types/car";
+import { formatBrandName } from "@/lib/formatters";
 
 interface WhatsappBookingProps {
   car: Car;
   className?: string;
 }
 
-export default function WhatsappBooking({ car, className = "" }: WhatsappBookingProps) {
-  // Format the brand name for display
-  const formatBrandName = (brand: string): string => {
-    switch (brand) {
-      case "mercedes":
-        return "Mercedes-Benz";
-      case "range-rover":
-        return "Range Rover";
-      case "rolls-royce":
-        return "Rolls-Royce";
-      default:
-        return brand.charAt(0).toUpperCase() + brand.slice(1);
-    }
-  };
-
+export default function WhatsappBooking({
+  car,
+  className = "",
+}: WhatsappBookingProps) {
   // Get the brand name
   const brandName = formatBrandName(car.brand);
 
@@ -32,8 +22,8 @@ export default function WhatsappBooking({ car, className = "" }: WhatsappBooking
   const handleWhatsAppBooking = () => {
     // The phone number should be replaced with your actual business phone number
     // Format: Country code without + and then the number, e.g., 1XXXXXXXXXX for US
-    const phoneNumber = "1234567890"; 
-    
+    const phoneNumber = "1234567890";
+
     // Create a template message with the car details and luxury service offering
     const message = `
 Hello 4MATIC Luxury Car Rental,
@@ -51,17 +41,17 @@ Please provide information about availability and any premium services or amenit
 
 Thank you.
     `.trim();
-    
+
     // Encode the message for the URL
     const encodedMessage = encodeURIComponent(message);
-    
+
     // Generate the WhatsApp URL
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    
+
     // Open WhatsApp in a new tab
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, "_blank");
   };
-  
+
   return (
     <Button
       variant="primary"

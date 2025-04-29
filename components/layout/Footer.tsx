@@ -19,9 +19,8 @@ export default function Footer() {
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "Our Fleet", href: "/vehicles" },
-    // { name: "Services", href: "/services" },
     { name: "Locations", href: "/locations" },
-    { name: "About Us", href: "/about" },
+    // { name: "About Us", href: "/about-us" },
     { name: "Contact Us", href: "/contact-us" },
   ];
 
@@ -40,15 +39,6 @@ export default function Footer() {
     { name: "Range Rover", href: "/vehicles?brand=range-rover" },
     { name: "Lamborghini", href: "/vehicles?brand=lamborghini" },
     { name: "Ferrari", href: "/vehicles?brand=ferrari" },
-  ];
-
-  const customerSupport = [
-    { name: "FAQ", href: "/faq" },
-    { name: "How it Works", href: "/how-it-works" },
-    { name: "Rental Policy", href: "/policy" },
-    { name: "Insurance", href: "/insurance" },
-    { name: "Concierge Services", href: "/concierge" },
-    { name: "Privacy Policy", href: "/privacy" },
   ];
 
   return (
@@ -81,11 +71,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <Image
-                src="/logo.jpg"
+                src="/4MAticlogo.png"
                 alt="4MATIC Logo"
                 width={200}
                 height={200}
-                className="h-20 w-auto"
+                className="logo-image"
               />
             </div>
             <p className="text-secondary-600 dark:text-secondary-400 mb-6">
@@ -97,19 +87,19 @@ export default function Footer() {
               <div className="flex items-start">
                 <Phone className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3" />
                 <span className="text-secondary-600 dark:text-secondary-400">
-                  +1 (888) 123-4567
+                  04 558 2435
                 </span>
               </div>
               <div className="flex items-start">
                 <Mail className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3" />
                 <span className="text-secondary-600 dark:text-secondary-400">
-                  contact@4matic-luxury.com
+                  info@4maticrental.com
                 </span>
               </div>
               <div className="flex items-start">
                 <MapPin className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3" />
                 <span className="text-secondary-600 dark:text-secondary-400">
-                  123 Luxury Avenue, NY 10001, USA
+                  Business Bay Marquise Square Tower Shop 04, Dubai
                 </span>
               </div>
             </div>
@@ -176,28 +166,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter Section */}
+        {/* Contact Form Section (Replacing Newsletter) */}
         <div className="mt-12 pt-8 border-t border-secondary-200 dark:border-secondary-800">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-lg font-bold text-secondary-900 dark:text-white mb-2">
-                Subscribe to Our Newsletter
+                Visit Our Showroom
               </h3>
               <p className="text-secondary-600 dark:text-secondary-400 mb-0">
-                Stay updated with our latest luxury vehicles and exclusive
-                offers.
+                Business Bay Marquise Square Tower Shop 04, Dubai, UAE
               </p>
             </div>
 
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-grow px-4 py-3 bg-secondary-50 dark:bg-secondary-900 border border-secondary-200 dark:border-secondary-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-              <button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-r-md transition-colors">
-                Subscribe
-              </button>
+            <div className="ml-auto">
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center justify-center w-full md:w-auto bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-md transition-colors"
+              >
+                Contact Us
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </div>
           </div>
         </div>
@@ -214,28 +202,16 @@ export default function Footer() {
           {/* Social links */}
           <div className="flex space-x-4">
             <a
-              href="#"
+              href="https://www.facebook.com/4maticrental/"
               className="text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               <Facebook className="w-5 h-5" />
             </a>
             <a
-              href="#"
-              className="text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-            >
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
+              href="https://www.instagram.com/4maticrental/"
               className="text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               <Instagram className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
-              className="text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-            >
-              <Linkedin className="w-5 h-5" />
             </a>
           </div>
         </div>

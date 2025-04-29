@@ -5,16 +5,15 @@ const convertToAED = (usdPrice: number): number => {
   return Math.round(usdPrice/10 * 2) * 10;
 };
 
-// This is our updated car database featuring the cars from the client's collection
+// Updated car database featuring cars from the client's collection
 export const carsDatabase: Car[] = [
+  // Mercedes-Benz Vehicles
   {
     id: "mercedes-s-class",
     name: "Mercedes-Benz S-Class 4MATIC",
-    image: "/cars/mercedes-s-class-4matic-black.jpg",
+    image: "/car-real/mercedes-s-class-4matic-black.JPG",
     images: [
-      "/cars/mercedes-s-class-4matic-black.jpg",
-      "/cars/mercedes-s-class-4matic-white.jpg",
-      "/cars/mercedes-s-class-4matic-white-2.jpg",
+      "/car-real/mercedes-s-class-4matic-black.JPG",
     ],
     rating: 4.9,
     reviews: 186,
@@ -48,14 +47,89 @@ export const carsDatabase: Car[] = [
     }
   },
   {
+    id: "mercedes-e-class",
+    name: "Mercedes-Benz E-Class",
+    image: "/car-real/mercedes-e-class-black.JPG",
+    images: [
+      "/car-real/mercedes-e-class-black.JPG",
+    ],
+    rating: 4.7,
+    reviews: 155,
+    passengers: 5,
+    airConditioning: true,
+    doors: 4,
+    transmission: "Auto",
+    price: convertToAED(180),
+    category: "luxury",
+    brand: "mercedes",
+    description: "The Mercedes-Benz E-Class exemplifies sophisticated executive luxury with its elegant design and advanced technology. Offering a perfect balance of comfort, performance, and prestige, it delivers a refined driving experience that makes every journey a pleasure.",
+    specs: {
+      engine: "2.0L Turbocharged Inline-4",
+      power: "255 hp",
+      torque: "370 Nm",
+      acceleration: "6.1 sec (0-100 km/h)",
+      topSpeed: "240 km/h",
+      fuelType: "Gasoline",
+      fuelConsumption: "7.4 L/100km",
+      driveTrain: "RWD",
+      features: [
+        "MBUX infotainment system",
+        "Wireless smartphone integration",
+        "Active Brake Assist",
+        "Adaptive high beam assist",
+        "64-color ambient lighting",
+        "Parking package with 360° camera",
+        "Multicontour front seats with massage",
+        "Energizing comfort control"
+      ]
+    }
+  },
+  {
+    id: "mercedes-gle-53-amg",
+    name: "Mercedes-AMG GLE 53",
+    image: "/car-real/mercedes-gle-53-amg.JPG",
+    images: [
+      "/car-real/mercedes-gle-53-amg.JPG",
+    ],
+    rating: 4.7,
+    reviews: 132,
+    passengers: 5,
+    airConditioning: true,
+    doors: 5,
+    transmission: "Auto",
+    price: convertToAED(280),
+    category: "suv",
+    brand: "mercedes",
+    description: "The Mercedes-AMG GLE 53 combines SUV practicality with AMG performance DNA. Its electrified powertrain, sophisticated suspension, and distinctive styling create a compelling vehicle that excels in both everyday use and dynamic driving scenarios.",
+    specs: {
+      engine: "3.0L Inline-6 Turbo with EQ Boost",
+      power: "429 hp",
+      torque: "520 Nm",
+      acceleration: "5.2 sec (0-100 km/h)",
+      topSpeed: "250 km/h",
+      fuelType: "Gasoline",
+      fuelConsumption: "9.3 L/100km",
+      driveTrain: "AWD (4MATIC+)",
+      features: [
+        "AMG Performance 4MATIC+",
+        "AMG RIDE CONTROL air suspension",
+        "AMG Dynamic Select driving modes",
+        "AMG-specific grille and bodywork",
+        "Burmester surround sound system",
+        "Widescreen cockpit with MBUX",
+        "AMG sports seats",
+        "Active Parking Assist"
+      ]
+    }
+  },
+  {
     id: "mercedes-amg-g63",
     name: "Mercedes-AMG G63",
-    image: "/cars/mercedes-amg-g63.jpg",
+    image: "/car-real/mercedes-amg-g63-mate-black.JPG",
     images: [
-      "/cars/mercedes-amg-g63.jpg",
-      "/cars/mercedes-amg-g63-black.jpg",
-      "/cars/mercedes-amg-g63-mate-black.jpg",
-      "/cars/mercedes-amg-g63-white.jpg",
+      "/car-real/mercedes-amg-g63-mate-black.JPG",
+      "/car-real/mercedes-amg-g63-black.JPG",
+      "/car-real/mercedes-amg-g63-blue.JPG",
     ],
     rating: 4.8,
     reviews: 142,
@@ -89,13 +163,91 @@ export const carsDatabase: Car[] = [
     }
   },
   {
+    id: "mercedes-maybach-gls",
+    name: "Mercedes-Maybach GLS",
+    image: "/car-real/mercedes-maybach-gls.JPG",
+    images: [
+      "/car-real/mercedes-maybach-gls.JPG",
+    ],
+    rating: 4.9,
+    reviews: 68,
+    passengers: 4,
+    airConditioning: true,
+    doors: 5,
+    transmission: "Auto",
+    price: convertToAED(490),
+    category: "luxury",
+    brand: "mercedes",
+    description: "The Mercedes-Maybach GLS represents the ultimate luxury SUV experience. It combines the commanding presence and capability of the GLS with the exceptional refinement and exclusivity of Maybach to create a vehicle that delivers first-class comfort with the versatility of an SUV.",
+    specs: {
+      engine: "4.0L V8 Biturbo",
+      power: "550 hp",
+      torque: "730 Nm",
+      acceleration: "4.9 sec (0-100 km/h)",
+      topSpeed: "250 km/h",
+      fuelType: "Gasoline",
+      fuelConsumption: "11.7 L/100km",
+      driveTrain: "AWD",
+      features: [
+        "Maybach Executive Rear Seats",
+        "Folding tables in rear",
+        "Champagne flutes and refrigerator",
+        "E-ACTIVE BODY CONTROL suspension",
+        "Burmester® High-End 3D Surround Sound",
+        "MBUX Rear Tablet",
+        "Night View Assist Plus",
+        "Maybach Exclusive nappa leather"
+      ]
+    }
+  },
+
+  // BMW Vehicles
+  {
+    id: "bmw-7-series",
+    name: "BMW 7 Series",
+    image: "/car-real/bmw-7-series.JPG",
+    images: [
+      "/car-real/bmw-7-series.JPG",
+    ],
+    rating: 4.8,
+    reviews: 145,
+    passengers: 5,
+    airConditioning: true,
+    doors: 4,
+    transmission: "Auto",
+    price: convertToAED(250),
+    category: "luxury",
+    brand: "bmw",
+    description: "The BMW 7 Series defines luxury with its blend of sophisticated design, cutting-edge technology, and dynamic performance. This flagship sedan delivers an exceptional driving experience with its powerful engine options, while pampering occupants with its opulent interior and advanced comfort features.",
+    specs: {
+      engine: "3.0L TwinPower Turbo Inline-6",
+      power: "335 hp",
+      torque: "450 Nm",
+      acceleration: "5.3 sec (0-100 km/h)",
+      topSpeed: "250 km/h",
+      fuelType: "Gasoline",
+      fuelConsumption: "7.9 L/100km",
+      driveTrain: "RWD",
+      features: [
+        "BMW Curved Display",
+        "Executive Lounge seating",
+        "Interior Light & Sky Lounge Panoramic roof",
+        "Bowers & Wilkins Diamond Surround Sound",
+        "BMW Digital Key Plus",
+        "Power rear sunshades",
+        "Active air suspension",
+        "Driving Assistant Professional"
+      ]
+    }
+  },
+
+  // Rolls Royce Vehicles
+  {
     id: "rolls-royce-cullinan",
     name: "Rolls-Royce Cullinan",
-    image: "/cars/rolls-royce-cullinan.jpg",
+    image: "/car-real/rolls-royce-cullinan-white.JPG",
     images: [
-      "/cars/rolls-royce-cullinan.jpg",
-      "/cars/rolls-royce-cullinan-white.jpg",
-      "/cars/rolls-royce-cullinan-white-2.jpg",
+      "/car-real/rolls-royce-cullinan-white.JPG",
     ],
     rating: 4.9,
     reviews: 78,
@@ -128,91 +280,89 @@ export const carsDatabase: Car[] = [
       ]
     }
   },
-  {
-    id: "bentley-continental-gt",
-    name: "Bentley Continental GT V8",
-    image: "/cars/bentley-continental-gt-v8.jpg",
-    images: [
-      "/cars/bentley-continental-gt-v8.jpg",
-      "/cars/bentley-continental-gt-azure.jpg",
-    ],
-    rating: 4.7,
-    reviews: 124,
-    passengers: 4,
-    airConditioning: true,
-    doors: 2,
-    transmission: "Auto",
-    price: convertToAED(380),
-    category: "luxury",
-    brand: "bentley",
-    description: "The Bentley Continental GT V8 combines power and elegance in a grand touring package. With its distinctive styling, exquisite handcrafted interior, and powerful V8 engine, it offers an exceptional driving experience that blends performance with British luxury craftsmanship.",
-    specs: {
-      engine: "4.0L Twin-Turbo V8",
-      power: "542 hp",
-      torque: "770 Nm",
-      acceleration: "4.0 sec (0-100 km/h)",
-      topSpeed: "318 km/h",
-      fuelType: "Gasoline",
-      fuelConsumption: "11.2 L/100km",
-      driveTrain: "AWD",
-      features: [
-        "Handcrafted wood veneers",
-        "Naim for Bentley audio system",
-        "Rotating display",
-        "Active all-wheel drive",
-        "Air suspension with continuous damping control",
-        "Massage seats",
-        "City Specification and Touring Specification",
-        "Mood lighting"
-      ]
-    }
-  },
-  {
-    id: "bentley-bentayga-azure",
-    name: "Bentley Bentayga Azure",
-    image: "/cars/bentley-bentayga-azure.jpg",
-    images: [
-      "/cars/bentley-bentayga-azure.jpg",
-    ],
-    rating: 4.8,
-    reviews: 96,
-    passengers: 5,
-    airConditioning: true,
-    doors: 5,
-    transmission: "Auto",
-    price: convertToAED(410),
-    category: "luxury",
-    brand: "bentley",
-    description: "The Bentley Bentayga Azure represents the pinnacle of luxury SUVs, combining extraordinary performance with unparalleled comfort. The Azure specification enhances wellbeing with unique design elements and increased comfort features, ensuring a serene driving experience in the most opulent surroundings.",
-    specs: {
-      engine: "4.0L Twin-Turbo V8",
-      power: "542 hp",
-      torque: "770 Nm",
-      acceleration: "4.5 sec (0-100 km/h)",
-      topSpeed: "290 km/h",
-      fuelType: "Gasoline",
-      fuelConsumption: "13.0 L/100km",
-      driveTrain: "AWD",
-      features: [
-        "Wellness quilted seats",
-        "Azure illuminated treadplates",
-        "Naim for Bentley premium audio",
-        "Bentley Dynamic Ride",
-        "Front seat comfort specification",
-        "Mood lighting",
-        "Head-up display",
-        "Night vision"
-      ]
-    }
-  },
+
+  // Bentley Vehicles
+  // {
+  //   id: "bentley-continental-gt",
+  //   name: "Bentley Continental GT V8",
+  //   images: [
+  //   ],
+  //   rating: 4.7,
+  //   reviews: 124,
+  //   passengers: 4,
+  //   airConditioning: true,
+  //   doors: 2,
+  //   transmission: "Auto",
+  //   price: convertToAED(380),
+  //   category: "luxury",
+  //   brand: "bentley",
+  //   description: "The Bentley Continental GT V8 combines power and elegance in a grand touring package. With its distinctive styling, exquisite handcrafted interior, and powerful V8 engine, it offers an exceptional driving experience that blends performance with British luxury craftsmanship.",
+  //   specs: {
+  //     engine: "4.0L Twin-Turbo V8",
+  //     power: "542 hp",
+  //     torque: "770 Nm",
+  //     acceleration: "4.0 sec (0-100 km/h)",
+  //     topSpeed: "318 km/h",
+  //     fuelType: "Gasoline",
+  //     fuelConsumption: "11.2 L/100km",
+  //     driveTrain: "AWD",
+  //     features: [
+  //       "Handcrafted wood veneers",
+  //       "Naim for Bentley audio system",
+  //       "Rotating display",
+  //       "Active all-wheel drive",
+  //       "Air suspension with continuous damping control",
+  //       "Massage seats",
+  //       "City Specification and Touring Specification",
+  //       "Mood lighting"
+  //     ]
+  //   }
+  // },
+  // {
+  //   id: "bentley-bentayga-azure",
+  //   name: "Bentley Bentayga Azure",
+  //   images: [
+  //   ],
+  //   rating: 4.8,
+  //   reviews: 96,
+  //   passengers: 5,
+  //   airConditioning: true,
+  //   doors: 5,
+  //   transmission: "Auto",
+  //   price: convertToAED(410),
+  //   category: "luxury",
+  //   brand: "bentley",
+  //   description: "The Bentley Bentayga Azure represents the pinnacle of luxury SUVs, combining extraordinary performance with unparalleled comfort. The Azure specification enhances wellbeing with unique design elements and increased comfort features, ensuring a serene driving experience in the most opulent surroundings.",
+  //   specs: {
+  //     engine: "4.0L Twin-Turbo V8",
+  //     power: "542 hp",
+  //     torque: "770 Nm",
+  //     acceleration: "4.5 sec (0-100 km/h)",
+  //     topSpeed: "290 km/h",
+  //     fuelType: "Gasoline",
+  //     fuelConsumption: "13.0 L/100km",
+  //     driveTrain: "AWD",
+  //     features: [
+  //       "Wellness quilted seats",
+  //       "Azure illuminated treadplates",
+  //       "Naim for Bentley premium audio",
+  //       "Bentley Dynamic Ride",
+  //       "Front seat comfort specification",
+  //       "Mood lighting",
+  //       "Head-up display",
+  //       "Night vision"
+  //     ]
+  //   }
+  // },
+
+  // Range Rover Vehicles
   {
     id: "range-rover-sport-sv",
     name: "Range Rover Sport SV",
-    image: "/cars/range-rover-sport-sv.jpg",
+    image: "/car-real/range-rover-sport-sv.JPG",
     images: [
-      "/cars/range-rover-sport-sv.jpg",
-      "/cars/range-rover-sport.jpg",
-      "/cars/range-rover-sport-black.jpg",
+      "/car-real/range-rover-sport-sv.JPG",
+      "/car-real/range-rover-sport-black.JPG",
     ],
     rating: 4.7,
     reviews: 135,
@@ -248,11 +398,10 @@ export const carsDatabase: Car[] = [
   {
     id: "range-rover-vogue-hse",
     name: "Range Rover Vogue HSE",
-    image: "/cars/range-rover-vogue-hse-black.jpg",
+    image: "/car-real/range-rover-vogue-hse-black.JPG",
     images: [
-      "/cars/range-rover-vogue-hse-black.jpg",
-      "/cars/range-rover-vogue-hse-gray.jpg",
-      "/cars/range-rover-vogue-hse-white-2.jpg",
+      "/car-real/range-rover-vogue-hse-black.JPG",
+      "/car-real/range-rover-vogue-hse-white-2.JPG",
     ],
     rating: 4.8,
     reviews: 156,
@@ -285,53 +434,54 @@ export const carsDatabase: Car[] = [
       ]
     }
   },
+  
+  // Audi Vehicles
   {
-    id: "range-rover-velar-rdynamic",
-    name: "Range Rover Velar R-Dynamic",
-    image: "/cars/range-rover-velar-r-dynamic.jpg",
+    id: "audi-q7-quattro",
+    name: "Audi Q7 quattro",
+    image: "/car-real/audi-q7-quattro.JPG",
     images: [
-      "/cars/range-rover-velar-r-dynamic.jpg",
+      "/car-real/audi-q7-quattro.JPG",
     ],
     rating: 4.6,
-    reviews: 118,
-    passengers: 5,
+    reviews: 128,
+    passengers: 7,
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(210),
+    price: convertToAED(240),
     category: "suv",
-    brand: "range-rover",
-    description: "The Range Rover Velar R-Dynamic combines avant-garde design with enhanced performance features. Its minimalist exterior, technical interior and refined driving dynamics create a compelling modern luxury SUV that stands out with its distinctive personality and striking presence.",
+    brand: "audi",
+    description: "The Audi Q7 quattro combines sophisticated luxury with versatile utility in a premium seven-seater SUV. Its refined interior, advanced technology, and quattro all-wheel drive capability deliver a composed and confident driving experience, making it ideal for both family adventures and executive transportation.",
     specs: {
-      engine: "2.0L P300 Turbocharged",
-      power: "300 hp",
-      torque: "400 Nm",
-      acceleration: "6.5 sec (0-100 km/h)",
-      topSpeed: "234 km/h",
+      engine: "3.0L V6 TFSI",
+      power: "340 hp",
+      torque: "500 Nm",
+      acceleration: "5.9 sec (0-100 km/h)",
+      topSpeed: "250 km/h",
       fuelType: "Gasoline",
-      fuelConsumption: "8.2 L/100km",
-      driveTrain: "AWD",
+      fuelConsumption: "9.1 L/100km",
+      driveTrain: "AWD (quattro)",
       features: [
-        "Perforated Windsor leather seats",
-        "R-Dynamic styling package",
-        "Pivi Pro dual touchscreen",
-        "Configurable Dynamics",
-        "Adaptive Dynamics",
+        "Audi Virtual Cockpit Plus",
+        "MMI Navigation plus with MMI touch",
+        "Bang & Olufsen 3D Premium Sound System",
+        "Adaptive air suspension",
+        "Panoramic sunroof",
+        "Four-zone automatic climate control",
         "Matrix LED headlights",
-        "Premium Textile and Kvadrat interior option",
-        "Meridian™ Sound System"
+        "Audi pre sense safety technologies"
       ]
     }
   },
+
+  // Porsche Vehicles
   {
     id: "porsche-911-carrera-gts",
     name: "Porsche 911 Carrera GTS",
-    image: "/cars/porsche-911-carrera-gts-blue.jpg",
+    image: "/car-real/porsche-911-carrera-gts-blue.JPG",
     images: [
-      "/IMG_7490.JPG",
-      "/cars/porsche-911-carrera-gts-blue.jpg",
-      "/cars/porsche-911-targa-black.jpg",
-      "/cars/porsche-911-targa-green.jpg",
+      "/car-real/porsche-911-carrera-gts-blue.JPG",
     ],
     rating: 4.8,
     reviews: 142,
@@ -365,50 +515,52 @@ export const carsDatabase: Car[] = [
     }
   },
   {
-    id: "mercedes-amg-gt-4door",
-    name: "Mercedes-AMG GT 4-Door",
-    image: "/cars/mercedes-amg-gt-4doors.jpg",
+    id: "porsche-911-targa",
+    name: "Porsche 911 Targa",
+    image: "/car-real/porsche-911-targa-black.JPG",
     images: [
-      "/cars/mercedes-amg-gt-4doors.jpg",
+      "/car-real/porsche-911-targa-black.JPG",
+      "/car-real/porsche-911-targa-green.JPG",
     ],
-    rating: 4.7,
-    reviews: 98,
-    passengers: 4,
+    rating: 4.8,
+    reviews: 128,
+    passengers: 2,
     airConditioning: true,
-    doors: 4,
+    doors: 2,
     transmission: "Auto",
-    price: convertToAED(330),
+    price: convertToAED(380),
     category: "sports",
-    brand: "mercedes",
-    description: "The Mercedes-AMG GT 4-Door combines the thrilling performance of a sports car with the practicality of a four-door coupe. With its handcrafted AMG engine, advanced technology, and luxurious interior, it offers a compelling blend of everyday usability and exhilarating driving dynamics.",
+    brand: "porsche",
+    description: "The Porsche 911 Targa offers a unique open-top driving experience with its innovative roof system that pays homage to the original 1967 Targa design. It combines the exhilaration of a convertible with the refinement of a coupe, all while delivering the legendary Porsche performance and precision.",
     specs: {
-      engine: "4.0L V8 Biturbo",
-      power: "630 hp",
-      torque: "900 Nm",
-      acceleration: "3.2 sec (0-100 km/h)",
-      topSpeed: "315 km/h",
+      engine: "3.0L Twin-Turbo Flat-6",
+      power: "443 hp",
+      torque: "530 Nm",
+      acceleration: "3.8 sec (0-100 km/h)",
+      topSpeed: "304 km/h",
       fuelType: "Gasoline",
-      fuelConsumption: "12.5 L/100km",
+      fuelConsumption: "10.4 L/100km",
       driveTrain: "AWD",
       features: [
-        "AMG Performance 4MATIC+",
-        "AMG RIDE CONTROL+",
-        "Widescreen cockpit",
-        "AMG Performance steering wheel",
-        "Active rear-wheel steering",
-        "Burmester surround sound",
-        "AMG Track Pace",
-        "Drift mode"
+        "Automatic Targa roof system",
+        "Sport Chrono Package",
+        "Porsche Active Suspension Management",
+        "LED headlights with Porsche Dynamic Light System",
+        "14-way power sport seats",
+        "Bose surround sound system",
+        "Porsche Communication Management",
+        "Lane Change Assist"
       ]
     }
   },
+
+  // Lamborghini Vehicles
   {
     id: "lamborghini-urus",
     name: "Lamborghini Urus",
-    image: "/cars/lamborghini-urus.jpg",
+    image: "/car-real/lamborghini-urus-gray.JPG",
     images: [
-      "/cars/lamborghini-urus.jpg",
-      "/cars/lamborghini-urus-gray.jpg",
+      "/car-real/lamborghini-urus-gray.JPG",
     ],
     rating: 4.8,
     reviews: 112,
@@ -441,13 +593,14 @@ export const carsDatabase: Car[] = [
       ]
     }
   },
+
+  // Cadillac Vehicles
   {
     id: "cadillac-escalade-v",
     name: "Cadillac Escalade V",
-    image: "/cars/cadillac-escalade-v.jpg",
+    image: "/car-real/cadillac-escalade-v.JPG",
     images: [
-      "/cars/cadillac-escalade-v.jpg",
-      "/cars/cadillac-escalade.jpg",
+      "/car-real/cadillac-escalade-v.JPG",
     ],
     rating: 4.6,
     reviews: 87,
@@ -480,50 +633,135 @@ export const carsDatabase: Car[] = [
       ]
     }
   },
+
+  // GMC Vehicles
   {
-    id: "ferrari-roma",
-    name: "Ferrari Roma",
-    image: "/cars/ferrari-roma.jpg",
+    id: "gmc-yukon-denali",
+    name: "GMC Yukon Denali",
+    image: "/car-real/gmc-yukon-black.JPG",
     images: [
-      "/cars/ferrari-roma.jpg",
+      "/car-real/gmc-yukon-black.JPG",
+      "/car-real/gmc-yukon-white.JPG",
     ],
-    rating: 4.9,
-    reviews: 76,
-    passengers: 2,
+    rating: 4.5,
+    reviews: 94,
+    passengers: 7,
     airConditioning: true,
-    doors: 2,
+    doors: 5,
     transmission: "Auto",
-    price: convertToAED(460),
-    category: "sports",
-    brand: "ferrari",
-    description: "The Ferrari Roma embodies 'La Nuova Dolce Vita' with its timeless and refined design. This elegant grand touring Ferrari combines exceptional performance with versatility and comfort, making it perfect for everyday driving while maintaining the thrilling experience expected of the Prancing Horse.",
+    price: convertToAED(220),
+    category: "suv",
+    brand: "gmc",
+    description: "The GMC Yukon Denali represents the pinnacle of GMC's full-size SUV lineup. With its distinctive styling, premium materials, and advanced technology, it delivers exceptional comfort and capability for passengers and cargo, making it ideal for both luxury travel and practical needs.",
     specs: {
-      engine: "3.9L Twin-Turbo V8",
-      power: "620 hp",
-      torque: "760 Nm",
-      acceleration: "3.4 sec (0-100 km/h)",
-      topSpeed: "320 km/h",
+      engine: "6.2L V8",
+      power: "420 hp",
+      torque: "624 Nm",
+      acceleration: "6.0 sec (0-100 km/h)",
+      topSpeed: "180 km/h",
       fuelType: "Gasoline",
-      fuelConsumption: "11.2 L/100km",
-      driveTrain: "RWD",
+      fuelConsumption: "14.7 L/100km",
+      driveTrain: "4WD",
       features: [
-        "8-speed dual-clutch transmission",
-        "Ferrari Side Slip Control 6.0",
-        "Manettino driving mode selector",
-        "Digital driver display",
-        "16-inch curved HD touchscreen",
-        "Full-grain Frau leather interior",
-        "Carbon fiber steering wheel with LED shift lights",
-        "Advanced driver assistance systems"
+        "Denali-exclusive interior trim",
+        "10.2-inch premium infotainment system",
+        "Multicolor Head-Up Display",
+        "Magnetic Ride Control",
+        "Power-retractable assist steps",
+        "Adaptive air suspension",
+        "Bose Performance Series 14-speaker audio",
+        "Rear-seat media system"
       ]
     }
   },
+
+  // Nissan Vehicles
+  {
+    id: "nissan-patrol-platinum",
+    name: "Nissan Patrol Platinum",
+    image: "/car-real/nissan-patrol-platinum.JPG",
+    images: [
+      "/car-real/nissan-patrol-platinum.JPG",
+    ],
+    rating: 4.5,
+    reviews: 125,
+    passengers: 7,
+    airConditioning: true,
+    doors: 5,
+    transmission: "Auto",
+    price: convertToAED(210),
+    category: "suv",
+    brand: "nissan",
+    description: "The Nissan Patrol Platinum is a flagship SUV that combines legendary off-road capability with premium luxury. Popular in the Middle East for its desert prowess and spacious comfort, it offers a sophisticated driving experience with powerful performance and advanced technology.",
+    specs: {
+      engine: "5.6L V8",
+      power: "400 hp",
+      torque: "560 Nm",
+      acceleration: "6.6 sec (0-100 km/h)",
+      topSpeed: "210 km/h",
+      fuelType: "Gasoline",
+      fuelConsumption: "14.5 L/100km",
+      driveTrain: "4WD",
+      features: [
+        "Hydraulic Body Motion Control",
+        "Premium leather seating with quilted stitching",
+        "Climate-controlled front seats",
+        "Dual 8-inch rear entertainment screens",
+        "13-speaker Bose premium audio",
+        "All-terrain monitoring system",
+        "Intelligent rear view mirror",
+        "Intelligent Around View Monitor"
+      ]
+    }
+  },
+
+  // Mini Vehicles
+  {
+    id: "mini-cooper-john-cooper-works",
+    name: "MINI John Cooper Works",
+    image: "/car-real/mini-cooper-john-cooper-works.JPG",
+    images: [
+      "/car-real/mini-cooper-john-cooper-works.JPG",
+    ],
+    rating: 4.6,
+    reviews: 98,
+    passengers: 4,
+    airConditioning: true,
+    doors: 3,
+    transmission: "Auto",
+    price: convertToAED(150),
+    category: "sports",
+    brand: "mini",
+    description: "The MINI John Cooper Works is the high-performance variant of the iconic MINI Cooper, offering track-inspired thrills in a compact package. With its powerful engine, sport-tuned suspension, and distinctive styling, it delivers an exhilarating driving experience with the unmistakable MINI character.",
+    specs: {
+      engine: "2.0L TwinPower Turbo",
+      power: "231 hp",
+      torque: "320 Nm",
+      acceleration: "6.1 sec (0-100 km/h)",
+      topSpeed: "246 km/h",
+      fuelType: "Gasoline",
+      fuelConsumption: "7.1 L/100km",
+      driveTrain: "FWD",
+      features: [
+        "Sport suspension with frequency-selective damping",
+        "John Cooper Works sport seats",
+        "Sport exhaust system",
+        "Performance Control",
+        "18-inch John Cooper Works alloy wheels",
+        "Aerodynamic body kit",
+        "Brembo sport brakes",
+        "MINI Connected infotainment"
+      ]
+    }
+  },
+
+  // Chevrolet Vehicles
   {
     id: "chevrolet-corvette-stingray",
     name: "Chevrolet Corvette Stingray",
-    image: "/cars/chevrolet-corvette-stingray.jpg",
+    image: "/car-real/chevrolet-corvette-stingray.JPG",
     images: [
-      "/cars/chevrolet-corvette-stingray.jpg",
+      "/car-real/chevrolet-corvette-stingray.JPG",
     ],
     rating: 4.7,
     reviews: 132,
@@ -557,49 +795,87 @@ export const carsDatabase: Car[] = [
     }
   },
   {
-    id: "toyota-corolla",
-    name: "Toyota Corolla",
-    image: "/cars/toyota-corolla.jpg",
+    id: "chevrolet-tahoe",
+    name: "Chevrolet Tahoe",
+    image: "/car-real/chevrolet-tahoe.JPG",
     images: [
-      "/cars/toyota-corolla.jpg",
+      "/car-real/chevrolet-tahoe.JPG",
     ],
-    rating: 4.3,
-    reviews: 198,
-    passengers: 5,
+    rating: 4.4,
+    reviews: 105,
+    passengers: 8,
     airConditioning: true,
-    doors: 4,
+    doors: 5,
     transmission: "Auto",
-    price: convertToAED(70),
-    category: "economy",
-    brand: "toyota",
-    description: "The Toyota Corolla continues its legacy as one of the world's most popular compact cars. Known for its reliability, efficiency and value, the latest generation adds dynamic styling, improved performance, and enhanced technology while maintaining the practical qualities that have made it a global bestseller.",
+    price: convertToAED(180),
+    category: "suv",
+    brand: "chevrolet",
+    description: "The Chevrolet Tahoe delivers full-size SUV capability with modern design and technology. Its spacious interior provides comfortable seating for up to eight passengers, while its robust power and towing capacity make it versatile for everything from family road trips to demanding utility needs.",
     specs: {
-      engine: "1.8L Inline-4",
-      power: "139 hp",
-      torque: "172 Nm",
-      acceleration: "10.2 sec (0-100 km/h)",
+      engine: "5.3L EcoTec3 V8",
+      power: "355 hp",
+      torque: "519 Nm",
+      acceleration: "7.2 sec (0-100 km/h)",
       topSpeed: "180 km/h",
       fuelType: "Gasoline",
-      fuelConsumption: "6.0 L/100km",
-      driveTrain: "FWD",
+      fuelConsumption: "12.4 L/100km",
+      driveTrain: "4WD",
       features: [
-        "Toyota Safety Sense 2.0",
-        "8-inch touchscreen",
-        "Apple CarPlay & Android Auto",
-        "Automatic climate control",
-        "LED headlights",
-        "60/40 split rear seats",
-        "Smart key with push button start",
-        "Backup camera"
+        "10.2-inch infotainment touchscreen",
+        "Independent rear suspension",
+        "Magnetic Ride Control (available)",
+        "Power-folding third row",
+        "Panoramic sunroof",
+        "Hands-free power liftgate",
+        "Wireless Apple CarPlay and Android Auto",
+        "Advanced trailering features"
       ]
     }
   },
+
+  // Economy Vehicles
+  // {
+  //   id: "toyota-corolla",
+  //   name: "Toyota Corolla",
+  //   images: [
+  //   ],
+  //   rating: 4.3,
+  //   reviews: 198,
+  //   passengers: 5,
+  //   airConditioning: true,
+  //   doors: 4,
+  //   transmission: "Auto",
+  //   price: convertToAED(70),
+  //   category: "economy",
+  //   brand: "toyota",
+  //   description: "The Toyota Corolla continues its legacy as one of the world's most popular compact cars. Known for its reliability, efficiency and value, the latest generation adds dynamic styling, improved performance, and enhanced technology while maintaining the practical qualities that have made it a global bestseller.",
+  //   specs: {
+  //     engine: "1.8L Inline-4",
+  //     power: "139 hp",
+  //     torque: "172 Nm",
+  //     acceleration: "10.2 sec (0-100 km/h)",
+  //     topSpeed: "180 km/h",
+  //     fuelType: "Gasoline",
+  //     fuelConsumption: "6.0 L/100km",
+  //     driveTrain: "FWD",
+  //     features: [
+  //       "Toyota Safety Sense 2.0",
+  //       "8-inch touchscreen",
+  //       "Apple CarPlay & Android Auto",
+  //       "Automatic climate control",
+  //       "LED headlights",
+  //       "60/40 split rear seats",
+  //       "Smart key with push button start",
+  //       "Backup camera"
+  //     ]
+  //   }
+  // },
   {
     id: "kia-cerato",
     name: "Kia Cerato",
-    image: "/cars/kia-cerato.jpg",
+    image: "/car-real/kia-cerato.JPG",
     images: [
-      "/cars/kia-cerato.jpg",
+      "/car-real/kia-cerato.JPG",
     ],
     rating: 4.2,
     reviews: 156,
@@ -635,9 +911,9 @@ export const carsDatabase: Car[] = [
   {
     id: "fiat-500",
     name: "Fiat 500",
-    image: "/cars/fiat-500.jpg",
+    image: "/car-real/fiat-500.JPG",
     images: [
-      "/cars/fiat-500.jpg",
+      "/car-real/fiat-500.JPG",
     ],
     rating: 4.1,
     reviews: 124,
@@ -671,117 +947,117 @@ export const carsDatabase: Car[] = [
     }
   },
   {
-    id: "hyundai-staria",
-    name: "Hyundai Staria (11 Passengers)",
-    image: "/cars/hyundai-staria-11-passengers.jpg",
+    id: "mitsubishi-attrage",
+    name: "Mitsubishi Attrage",
+    image: "/car-real/mitsubishi-attrage.JPG",
     images: [
-      "/cars/hyundai-staria-11-passengers.jpg",
+      "/car-real/mitsubishi-attrage.JPG",
     ],
-    rating: 4.4,
-    reviews: 86,
-    passengers: 11,
+    rating: 4.0,
+    reviews: 142,
+    passengers: 5,
     airConditioning: true,
-    doors: 5,
+    doors: 4,
     transmission: "Auto",
-    price: convertToAED(190),
-    category: "minivan",
-    brand: "hyundai",
-    description: "The Hyundai Staria represents a bold new vision for MPVs with its futuristic design and exceptional space. This 11-passenger variant maximizes practicality while delivering a premium experience, making it ideal for large families, group travel, or commercial transport applications.",
+    price: convertToAED(50),
+    category: "economy",
+    brand: "mitsubishi",
+    description: "The Mitsubishi Attrage is a compact sedan that offers remarkable efficiency and practicality. With its spacious interior despite compact dimensions, excellent fuel economy, and affordable price point, it's an ideal choice for budget-conscious urban drivers seeking reliable transportation.",
     specs: {
-      engine: "2.2L CRDi Diesel",
-      power: "177 hp",
-      torque: "431 Nm",
-      acceleration: "12.4 sec (0-100 km/h)",
-      topSpeed: "180 km/h",
-      fuelType: "Diesel",
-      fuelConsumption: "7.5 L/100km",
+      engine: "1.2L MIVEC Inline-3",
+      power: "78 hp",
+      torque: "100 Nm",
+      acceleration: "13.5 sec (0-100 km/h)",
+      topSpeed: "170 km/h",
+      fuelType: "Gasoline",
+      fuelConsumption: "4.9 L/100km",
       driveTrain: "FWD",
       features: [
-        "11-seat configuration",
-        "10.25-inch touchscreen infotainment",
-        "Wireless charging",
-        "Ambient interior lighting",
-        "Smart power sliding doors",
-        "Full-range safety systems",
-        "Multi-zone climate control",
-        "Interior camera to monitor rear passengers"
+        "7-inch smartphone-link display audio",
+        "Automatic climate control",
+        "Keyless entry with push-button start",
+        "Rearview camera",
+        "LED positioning lights",
+        "Hill start assist",
+        "Bluetooth connectivity",
+        "Stability and traction control"
       ]
     }
   },
+
+  // Minivan/Crossover Vehicles
   {
-    id: "kia-carnival",
-    name: "Kia Carnival",
-    image: "/cars/kia-carival.jpg",
+    id: "mitsubishi-outlander",
+    name: "Mitsubishi Outlander",
+    image: "/car-real/mitsubishi-outlander.JPG",
     images: [
-      "/cars/kia-carival.jpg",
+      "/car-real/mitsubishi-outlander.JPG",
     ],
-    rating: 4.5,
-    reviews: 94,
-    passengers: 8,
+    rating: 4.3,
+    reviews: 112,
+    passengers: 7,
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(170),
-    category: "minivan",
-    brand: "kia",
-    description: "The Kia Carnival redefines the minivan segment with its SUV-inspired design and premium features. It delivers exceptional interior space, versatile seating configurations, and advanced technology to provide a sophisticated transportation solution for families and VIP transport services.",
+    price: convertToAED(120),
+    category: "suv",
+    brand: "mitsubishi",
+    description: "The Mitsubishi Outlander offers versatile seven-seat capability in a stylish crossover package. With its bold design, comfortable interior, and advanced all-wheel control system, it provides practical family transportation with the capability to handle various driving conditions and adventures.",
     specs: {
-      engine: "3.5L V6",
-      power: "290 hp",
-      torque: "355 Nm",
-      acceleration: "8.5 sec (0-100 km/h)",
+      engine: "2.5L Inline-4",
+      power: "181 hp",
+      torque: "245 Nm",
+      acceleration: "9.7 sec (0-100 km/h)",
       topSpeed: "190 km/h",
       fuelType: "Gasoline",
-      fuelConsumption: "9.6 L/100km",
-      driveTrain: "FWD",
+      fuelConsumption: "8.1 L/100km",
+      driveTrain: "AWD",
       features: [
-        "Dual power sliding doors",
-        "12.3-inch touchscreen infotainment",
-        "Passenger view camera",
-        "Dual sunroof",
-        "Premium relaxation seats",
-        "Smart power tailgate",
-        "Bose premium audio",
-        "Comprehensive safety suite"
+        "Super All-Wheel Control (S-AWC)",
+        "9-inch smartphone-link display audio",
+        "Tri-zone automatic climate control",
+        "Power panoramic sunroof",
+        "12.3-inch digital driver display",
+        "MI-PILOT Assist",
+        "10-speaker Bose premium sound system",
+        "Drive mode selector"
       ]
     }
   },
-  {
-    id: "mercedes-maybach-gls",
-    name: "Mercedes-Maybach GLS",
-    image: "/cars/mercedes-maybach-gls.jpg",
-    images: [
-      "/cars/mercedes-maybach-gls.jpg",
-    ],
-    rating: 4.9,
-    reviews: 68,
-    passengers: 4,
-    airConditioning: true,
-    doors: 5,
-    transmission: "Auto",
-    price: convertToAED(490),
-    category: "luxury",
-    brand: "mercedes",
-    description: "The Mercedes-Maybach GLS represents the ultimate luxury SUV experience. It combines the commanding presence and capability of the GLS with the exceptional refinement and exclusivity of Maybach to create a vehicle that delivers first-class comfort with the versatility of an SUV.",
-    specs: {
-      engine: "4.0L V8 Biturbo",
-      power: "550 hp",
-      torque: "730 Nm",
-      acceleration: "4.9 sec (0-100 km/h)",
-      topSpeed: "250 km/h",
-      fuelType: "Gasoline",
-      fuelConsumption: "11.7 L/100km",
-      driveTrain: "AWD",
-      features: [
-        "Maybach Executive Rear Seats",
-        "Folding tables in rear",
-        "Champagne flutes and refrigerator",
-        "E-ACTIVE BODY CONTROL suspension",
-        "Burmester® High-End 3D Surround Sound",
-        "MBUX Rear Tablet",
-        "Night View Assist Plus",
-        "Maybach Exclusive nappa leather"
-      ]
-    }
-  }
+  // {
+  //   id: "hyundai-staria",
+  //   name: "Hyundai Staria (11 Passengers)",
+  //   images: [
+  //   ],
+  //   rating: 4.4,
+  //   reviews: 86,
+  //   passengers: 11,
+  //   airConditioning: true,
+  //   doors: 5,
+  //   transmission: "Auto",
+  //   price: convertToAED(190),
+  //   category: "minivan",
+  //   brand: "hyundai",
+  //   description: "The Hyundai Staria represents a bold new vision for MPVs with its futuristic design and exceptional space. This 11-passenger variant maximizes practicality while delivering a premium experience, making it ideal for large families, group travel, or commercial transport applications.",
+  //   specs: {
+  //     engine: "2.2L CRDi Diesel",
+  //     power: "177 hp",
+  //     torque: "431 Nm",
+  //     acceleration: "12.4 sec (0-100 km/h)",
+  //     topSpeed: "180 km/h",
+  //     fuelType: "Diesel",
+  //     fuelConsumption: "7.5 L/100km",
+  //     driveTrain: "FWD",
+  //     features: [
+  //       "11-seat configuration",
+  //       "10.25-inch touchscreen infotainment",
+  //       "Wireless charging",
+  //       "Ambient interior lighting",
+  //       "Smart power sliding doors",
+  //       "Full-range safety systems",
+  //       "Multi-zone climate control",
+  //       "Interior camera to monitor rear passengers"
+  //     ]
+  //   }
+  // }
 ];

@@ -2,7 +2,6 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 import CarCollection from "./_components/CarCollection";
-import FilterSidebar from "./_components/FilterSidebar";
 import CollectionHeader from "./_components/CollectionHeader";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -34,19 +33,10 @@ export default function VehiclesPage({ searchParams }: VehiclesPageProps) {
         <CollectionHeader />
         
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Filters Sidebar */}
-            <div className="w-full lg:w-1/4">
-              <FilterSidebar />
-            </div>
-            
-            {/* Car Collection */}
-            <div className="w-full lg:w-3/4">
-              <Suspense fallback={<Loading />}>
-                <CarCollection searchParams={searchParams} />
-              </Suspense>
-            </div>
-          </div>
+          {/* Car Collection - Now with modal filtering */}
+          <Suspense fallback={<Loading />}>
+            <CarCollection searchParams={searchParams} />
+          </Suspense>
         </div>
       </main>
       <Footer />

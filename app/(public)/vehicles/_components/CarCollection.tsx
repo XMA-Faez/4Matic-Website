@@ -1,9 +1,10 @@
-// app/(public)/vehicles/_components/CarCollection.tsx
+// app/(public)/vehicles/_components// app/(public)/vehicles/_components/CarCollection.tsx
 import React from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, SlidersHorizontal } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import CarCard from "@/components/cars/CarCard";
 import SortDropdown from "./SortDropdown";
+import FilterModal from "./FilterModal";
 import CollectionEmpty from "./CollectionEmpty";
 import { getCars } from "../_actions/car-actions";
 
@@ -96,13 +97,16 @@ export default async function CarCollection({ searchParams }: CarCollectionProps
   
   return (
     <div className="w-full">
-      {/* Collection header with total count and sorting */}
+      {/* Collection header with total count, filters and sorting */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-        <div className="mb-4 sm:mb-0">
-          <p className="text-sm text-secondary-600 dark:text-secondary-400">
+        <div className="mb-4 sm:mb-0 flex items-center">
+          <p className="text-sm text-secondary-600 dark:text-secondary-400 mr-4">
             Showing <span className="font-medium text-secondary-900 dark:text-white">{cars.length}</span> of{" "}
             <span className="font-medium text-secondary-900 dark:text-white">{totalCars}</span> vehicles
           </p>
+          
+          {/* Add the Filter Modal component here */}
+          <FilterModal />
         </div>
         
         <SortDropdown currentSort={sort || "recommended"} />
