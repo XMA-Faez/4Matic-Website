@@ -85,15 +85,19 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-start">
                 <Phone className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3" />
-                <span className="text-secondary-600 dark:text-secondary-400">
-                  056 970 0700
-                </span>
+                <Link href="tel:+971569700700">
+                  <span className="text-secondary-600 dark:text-secondary-400">
+                    056 970 0700
+                  </span>
+                </Link>
               </div>
               <div className="flex items-start">
                 <Mail className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3" />
-                <span className="text-secondary-600 dark:text-secondary-400">
-                  info@4maticrental.com
-                </span>
+                <Link href="mailto:info@4maticrental.com">
+                  <span className="text-secondary-600 dark:text-secondary-400">
+                    info@4maticrental.com
+                  </span>
+                </Link>
               </div>
               <div className="flex items-start">
                 <MapPin className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3" />
