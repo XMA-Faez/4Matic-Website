@@ -38,7 +38,6 @@ export default function Footer() {
     { name: "Rolls-Royce", href: "/vehicles?brand=rolls-royce" },
     { name: "Range Rover", href: "/vehicles?brand=range-rover" },
     { name: "Lamborghini", href: "/vehicles?brand=lamborghini" },
-    { name: "Ferrari", href: "/vehicles?brand=ferrari" },
   ];
 
   return (

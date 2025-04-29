@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { CalendarIcon, MapPinIcon, Clock, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import Link from "next/link";
 
 export default function Hero() {
   const [location, setLocation] = useState("");
@@ -56,43 +57,38 @@ export default function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
-              <Button 
-                variant="primary" 
-                size="lg" 
-                icon={<ArrowRight />}
-              >
-                Browse Vehicles
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="text-white border-secondary-700 hover:bg-secondary-800"
-              >
-                How It Works
-              </Button>
+              <Link href="/vehicles">
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  icon={<ArrowRight />}
+                >
+                  Browse Vehicles
+                </Button>
+              </Link>
             </div>
             
-            <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-8">
-              <div className="flex items-center">
-                <div className="bg-primary-900/50 p-2 rounded-full mr-3">
-                  <Clock className="h-5 w-5 text-primary-300" />
-                </div>
-                <div>
-                  <p className="text-white font-medium">24/7 Support</p>
-                  <p className="text-secondary-400 text-sm">Always available</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center">
-                <div className="bg-primary-900/50 p-2 rounded-full mr-3">
-                  <MapPinIcon className="h-5 w-5 text-primary-300" />
-                </div>
-                <div>
-                  <p className="text-white font-medium">100+ Locations</p>
-                  <p className="text-secondary-400 text-sm">Across the country</p>
-                </div>
-              </div>
-            </div>
+            {/* <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-8"> */}
+            {/*   <div className="flex items-center"> */}
+            {/*     <div className="bg-primary-900/50 p-2 rounded-full mr-3"> */}
+            {/*       <Clock className="h-5 w-5 text-primary-300" /> */}
+            {/*     </div> */}
+            {/*     <div> */}
+            {/*       <p className="text-white font-medium">24/7 Support</p> */}
+            {/*       <p className="text-secondary-400 text-sm">Always available</p> */}
+            {/*     </div> */}
+            {/*   </div> */}
+            {/*    */}
+            {/*   <div className="flex items-center"> */}
+            {/*     <div className="bg-primary-900/50 p-2 rounded-full mr-3"> */}
+            {/*       <MapPinIcon className="h-5 w-5 text-primary-300" /> */}
+            {/*     </div> */}
+            {/*     <div> */}
+            {/*       <p className="text-white font-medium">100+ Locations</p> */}
+            {/*       <p className="text-secondary-400 text-sm">Across the country</p> */}
+            {/*     </div> */}
+            {/*   </div> */}
+            {/* </div> */}
           </div>
           
           {/* Right Image */}

@@ -20,7 +20,6 @@ export default function PopularDeals() {
     { id: "suv", label: "SUVs" },
     { id: "sports", label: "Sports" },
     { id: "economy", label: "Economy" },
-    { id: "minivan", label: "Minivans" },
   ];
 
   // Effect to filter cars based on selected category
