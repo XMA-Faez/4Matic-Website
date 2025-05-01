@@ -20,7 +20,7 @@ export default function BrandGrid({ brands }: BrandProps) {
         >
           <div className="h-20 flex items-center justify-center">
             {/* Using explicit sizing with the component */}
-            <Image src={brand.icon} className="w-full h-full" />
+            <Image src={brand.icon} className="h-full object-contain" />
           </div>
         </div>
       ))}
