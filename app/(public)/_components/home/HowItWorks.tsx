@@ -1,10 +1,15 @@
 // app/(public)/_components/home/HowItWorks.tsx
 import { CheckCircle, CalendarDays, Car } from "lucide-react";
-import { SiMercedes, SiBentley, SiRollsroyce, SiBmw, SiLamborghini, SiPorsche } from "react-icons/si";
 import Button from "@/components/ui/Button";
 import StepCard from "./StepCard";
-import BrandGrid from "./BrandGrid";
 import SectionHeader from "@/components/ui/SectionHeader";
+import BrandGrid from "./BrandGrid";
+import Mercedes from "@/public/brands/Mercedes-Benz-logo-2009-1920x1080.png"
+import Bentley from "@/public/brands/bentley-logo-2002-download.png"
+import Rollsroyce from "@/public/brands/rolls-royce.svg"
+import Bmw from "@/public/brands/bmw-logo-2020-white-download.png"
+import Lamborghini from "@/public/brands/lamborghini.svg"
+import Porsche from "@/public/brands/porsche-logo-2014-download.png"
 
 export default function HowItWorks() {
   const steps = [
@@ -29,12 +34,12 @@ export default function HowItWorks() {
   ];
 
   const brands = [
-    { name: "Mercedes-Benz", icon: SiMercedes },
-    { name: "Bentley", icon: SiBentley },
-    { name: "Rolls-Royce", icon: SiRollsroyce },
-    { name: "BMW", icon: SiBmw },
-    { name: "Lamborghini", icon: SiLamborghini },
-    { name: "Porsche", icon: SiPorsche }
+    { name: "Mercedes-Benz", icon: Mercedes },
+    { name: "Bentley", icon: Bentley },
+    { name: "Rolls-Royce", icon: Rollsroyce },
+    { name: "BMW", icon: Bmw },
+    { name: "Lamborghini", icon: Lamborghini },
+    { name: "Porsche", icon: Porsche }
   ];
 
   return (
