@@ -1,4 +1,3 @@
-// components/layout/Header.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -44,7 +43,6 @@ const Header: React.FC = () => {
         { label: "Ferrari", href: "/vehicles?brand=ferrari" },
       ]
     },
-    // { label: "About Us", href: "/about-us" },
     { label: "Contact Us", href: "/contact-us" },
   ];
 
@@ -71,6 +69,11 @@ const Header: React.FC = () => {
     setActiveMobileDropdown(activeMobileDropdown === label ? null : label);
   };
 
+  // Close mobile menu
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -89,7 +92,7 @@ const Header: React.FC = () => {
                 alt="4MATIC Logo"
                 width={100}
                 height={100}
-                className="logo-image"
+                className="h-14 w-auto"
               />
             </div>
           </Link>
@@ -138,7 +141,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Contact Button - Replacing Authentication Buttons */}
+          {/* Contact Button - Desktop */}
           <div className="hidden md:flex items-center">
             <Button 
               variant="primary" 
@@ -166,12 +169,21 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div 
         className={`md:hidden fixed inset-0 bg-secondary-800/95 backdrop-blur-sm z-40 transition-transform duration-300 ease-in-out transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        {/* Close button - Fixed at top right */}
+        <button
+          onClick={closeMobileMenu}
+          className="absolute top-6 right-6 p-2 text-white hover:text-primary-400 transition-colors"
+          aria-label="Close menu"
+        >
+          <X className="h-6 w-6" />
+        </button>
+
         <div className="flex flex-col h-full pt-20 pb-6 px-6 overflow-auto">
           <nav className="space-y-1 mb-8">
             {navItems.map((item) => (
@@ -197,7 +209,7 @@ const Header: React.FC = () => {
                             key={child.label}
                             href={child.href}
                             className="block py-2 text-secondary-200 hover:text-white text-sm"
-                            onClick={() => setIsOpen(false)}
+                            onClick={closeMobileMenu}
                           >
                             {child.label}
                           </Link>
@@ -209,7 +221,7 @@ const Header: React.FC = () => {
                   <Link 
                     href={item.href}
                     className="block py-4 text-white font-medium"
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeMobileMenu}
                   >
                     {item.label}
                   </Link>
@@ -218,6 +230,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
           
+          {/* Contact Button - Mobile */}
           <div className="mt-auto">
             <Button 
               variant="primary" 

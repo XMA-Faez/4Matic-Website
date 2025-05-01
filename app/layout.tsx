@@ -3,6 +3,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+// Dynamically import the WhatsApp button to avoid SSR issues
+const WhatsAppButton = dynamic(() => import("@/components/ui/WhatsAppButton"));
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -46,7 +50,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} font-sans antialiased`}
       >
         <Suspense>{children}</Suspense>
-        {/* Scroll to top button - client component would be added here */}
+        {/* Simple WhatsApp button */}
+        <WhatsAppButton />
       </body>
     </html>
   );

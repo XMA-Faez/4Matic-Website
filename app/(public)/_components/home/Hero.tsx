@@ -56,7 +56,7 @@ export default function Hero() {
               Quick booking, transparent pricing, no hidden fees.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
               <Link href="/vehicles">
                 <Button 
                   variant="primary" 
