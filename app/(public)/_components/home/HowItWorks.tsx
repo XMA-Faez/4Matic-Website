@@ -19,19 +19,19 @@ export default function HowItWorks() {
   const steps: Step[] = [
     {
       number: 1,
-      icon: <CheckCircle className="text-primary-500 w-7 h-7" />,
+      icon: <CheckCircle className="text-primary-500 w-full" />,
       title: "Select Your Vehicle",
       description: "Browse our collection of premium and luxury vehicles to find the perfect match for your needs."
     },
     {
       number: 2,
-      icon: <CalendarDays className="text-primary-500 w-7 h-7" />,
+      icon: <CalendarDays className="text-primary-500 w-full" />,
       title: "Choose Your Dates",
       description: "Select your preferred pickup and return dates and times that suit your schedule."
     },
     {
       number: 3,
-      icon: <Car className="text-primary-500 w-7 h-7" />,
+      icon: <Car className="text-primary-500 w-full" />,
       title: "Enjoy Your Experience",
       description: "Complete your booking and enjoy our premium delivery and concierge services."
     }
