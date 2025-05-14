@@ -10,7 +10,7 @@ export const carsDatabase: Car[] = [
   // Mercedes-Benz Vehicles
   {
     id: "mercedes-s-class",
-    name: "Mercedes-Benz S-Class 4MATIC",
+    name: "Mercedes-Benz S-Class 4MATIC 2021",
     image: "/car-real/mercedes-s-class-4matic-black.JPG",
     images: [
       "/car-real/mercedes-s-class-4matic-black.JPG",
@@ -21,7 +21,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 4,
     transmission: "Auto",
-    price: convertToAED(220),
+    price: 1200, // Updated from PDF: 1200 AED daily (2021/2022 models)
     category: "luxury",
     brand: "mercedes",
     description: "The Mercedes-Benz S-Class 4MATIC represents the pinnacle of luxury and technology in the automotive world. With its opulent interior, cutting-edge features, and exceptional comfort, it delivers an unmatched premium experience with the added capability of all-wheel drive.",
@@ -48,7 +48,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "mercedes-e-class",
-    name: "Mercedes-Benz E-Class",
+    name: "Mercedes-Benz E-Class 2022",
     image: "/car-real/mercedes-e-class-black.JPG",
     images: [
       "/car-real/mercedes-e-class-black.JPG",
@@ -59,7 +59,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 4,
     transmission: "Auto",
-    price: convertToAED(180),
+    price: 500, // Updated from PDF: 500 AED daily (2022 Black model)
     category: "luxury",
     brand: "mercedes",
     description: "The Mercedes-Benz E-Class exemplifies sophisticated executive luxury with its elegant design and advanced technology. Offering a perfect balance of comfort, performance, and prestige, it delivers a refined driving experience that makes every journey a pleasure.",
@@ -86,7 +86,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "mercedes-gle-53-amg",
-    name: "Mercedes-AMG GLE 53",
+    name: "Mercedes-AMG GLE 53 2022",
     image: "/car-real/mercedes-gle-53-amg.JPG",
     images: [
       "/car-real/mercedes-gle-53-amg.JPG",
@@ -97,7 +97,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(280),
+    price: 1000, // Updated from PDF: 1000 AED daily (2022 Grey model)
     category: "suv",
     brand: "mercedes",
     description: "The Mercedes-AMG GLE 53 combines SUV practicality with AMG performance DNA. Its electrified powertrain, sophisticated suspension, and distinctive styling create a compelling vehicle that excels in both everyday use and dynamic driving scenarios.",
@@ -124,7 +124,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "mercedes-amg-g63",
-    name: "Mercedes-AMG G63",
+    name: "Mercedes-AMG G63 2025",
     image: "/car-real/mercedes-amg-g63-mate-black.JPG",
     images: [
       "/car-real/mercedes-amg-g63-mate-black.JPG",
@@ -137,7 +137,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(350),
+    price: 2300, // Updated from PDF: 2300 AED daily (2025 Black/White/Blue model)
     category: "luxury",
     brand: "mercedes",
     description: "The Mercedes-AMG G63 is an iconic luxury SUV that combines rugged off-road capability with exceptional performance and prestige. This legendary G-Class offers a handcrafted AMG engine, sophisticated luxury, and unmistakable design that makes a powerful statement wherever you go.",
@@ -164,7 +164,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "mercedes-maybach-gls",
-    name: "Mercedes-Maybach GLS",
+    name: "Mercedes-Maybach GLS 600 2022",
     image: "/car-real/mercedes-maybach-gls.JPG",
     images: [
       "/car-real/mercedes-maybach-gls.JPG",
@@ -175,7 +175,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(490),
+    price: 2200, // Updated from PDF: 2200 AED daily (2022 Black model)
     category: "luxury",
     brand: "mercedes",
     description: "The Mercedes-Maybach GLS represents the ultimate luxury SUV experience. It combines the commanding presence and capability of the GLS with the exceptional refinement and exclusivity of Maybach to create a vehicle that delivers first-class comfort with the versatility of an SUV.",
@@ -204,7 +204,7 @@ export const carsDatabase: Car[] = [
   // BMW Vehicles
   {
     id: "bmw-7-series",
-    name: "BMW 7 Series",
+    name: "BMW 735 2023",
     image: "/car-real/bmw-7-series.JPG",
     images: [
       "/car-real/bmw-7-series.JPG",
@@ -215,7 +215,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 4,
     transmission: "Auto",
-    price: convertToAED(250),
+    price: 1400, // Updated from PDF: 1400 AED daily (2023 Grey model)
     category: "luxury",
     brand: "bmw",
     description: "The BMW 7 Series defines luxury with its blend of sophisticated design, cutting-edge technology, and dynamic performance. This flagship sedan delivers an exceptional driving experience with its powerful engine options, while pampering occupants with its opulent interior and advanced comfort features.",
@@ -244,7 +244,7 @@ export const carsDatabase: Car[] = [
   // Rolls Royce Vehicles
   {
     id: "rolls-royce-cullinan",
-    name: "Rolls-Royce Cullinan",
+    name: "Rolls-Royce Cullinan 2023",
     image: "/car-real/rolls-royce-cullinan-white.JPG",
     images: [
       "/car-real/rolls-royce-cullinan-white.JPG",
@@ -255,7 +255,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(550),
+    price: 3700, // Updated from PDF: 3700 AED daily (2023 White model)
     category: "luxury",
     brand: "rolls-royce",
     description: "The Rolls-Royce Cullinan is the first all-terrain SUV from Rolls-Royce, delivering effortless luxury everywhere. Named after the largest diamond ever discovered, the Cullinan offers uncompromised comfort with exceptional performance on any terrain, embodying the ultimate in automotive elegance.",
@@ -358,7 +358,7 @@ export const carsDatabase: Car[] = [
   // Range Rover Vehicles
   {
     id: "range-rover-sport-sv",
-    name: "Range Rover Sport SV",
+    name: "Range Rover Sport SV 2024",
     image: "/car-real/range-rover-sport-sv.JPG",
     images: [
       "/car-real/range-rover-sport-sv.JPG",
@@ -370,7 +370,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(300),
+    price: 2000, // Updated from PDF: 2000 AED daily (2024 Golden model)
     category: "suv",
     brand: "range-rover",
     description: "The Range Rover Sport SV delivers extraordinary performance combined with Range Rover's legendary capability and refinement. This high-performance SUV features exclusive SV enhancements, bespoke design elements, and track-inspired dynamics while maintaining the luxury and versatility expected from Range Rover.",
@@ -397,7 +397,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "range-rover-vogue-hse",
-    name: "Range Rover Vogue HSE",
+    name: "Range Rover Vogue 2024",
     image: "/car-real/range-rover-vogue-hse-black.JPG",
     images: [
       "/car-real/range-rover-vogue-hse-black.JPG",
@@ -409,7 +409,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(290),
+    price: 1800, // Updated from PDF: 1800 AED daily (2024 Black/Grey model)
     category: "suv",
     brand: "range-rover",
     description: "The Range Rover Vogue HSE embodies luxury, sophistication, and capability in a full-size SUV package. With its distinctive design, advanced technology, and refined driving dynamics, it offers an exceptional experience whether traversing urban landscapes or venturing off-road.",
@@ -438,7 +438,7 @@ export const carsDatabase: Car[] = [
   // Audi Vehicles
   {
     id: "audi-q7-quattro",
-    name: "Audi Q7 quattro",
+    name: "Audi Q7 quattro 2022",
     image: "/car-real/audi-q7-quattro.JPG",
     images: [
       "/car-real/audi-q7-quattro.JPG",
@@ -449,7 +449,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(240),
+    price: 700, // Updated from PDF: 700 AED daily (2022 Grey/White model)
     category: "suv",
     brand: "audi",
     description: "The Audi Q7 quattro combines sophisticated luxury with versatile utility in a premium seven-seater SUV. Its refined interior, advanced technology, and quattro all-wheel drive capability deliver a composed and confident driving experience, making it ideal for both family adventures and executive transportation.",
@@ -478,7 +478,7 @@ export const carsDatabase: Car[] = [
   // Porsche Vehicles
   {
     id: "porsche-911-carrera-gts",
-    name: "Porsche 911 Carrera GTS",
+    name: "Porsche 911 Carrera GTS 2023",
     image: "/car-real/porsche-911-carrera-gts-blue.JPG",
     images: [
       "/car-real/porsche-911-carrera-gts-blue.JPG",
@@ -489,7 +489,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 2,
     transmission: "Auto",
-    price: convertToAED(360),
+    price: 1700, // Updated from PDF: 1700 AED daily (2023 Blue model)
     category: "sports",
     brand: "porsche",
     description: "The Porsche 911 Carrera GTS bridges the gap between the standard Carrera and the track-focused GT3. With enhanced power, bespoke styling cues, and performance-focused equipment, it offers driving enthusiasts the perfect balance of everyday usability and thrilling performance.",
@@ -516,7 +516,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "porsche-911-targa",
-    name: "Porsche 911 Targa",
+    name: "Porsche 911 Targa 2022",
     image: "/car-real/porsche-911-targa-black.JPG",
     images: [
       "/car-real/porsche-911-targa-black.JPG",
@@ -528,7 +528,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 2,
     transmission: "Auto",
-    price: convertToAED(380),
+    price: 1700, // Updated from PDF: 1700 AED daily (2022/2024 models)
     category: "sports",
     brand: "porsche",
     description: "The Porsche 911 Targa offers a unique open-top driving experience with its innovative roof system that pays homage to the original 1967 Targa design. It combines the exhilaration of a convertible with the refinement of a coupe, all while delivering the legendary Porsche performance and precision.",
@@ -557,7 +557,7 @@ export const carsDatabase: Car[] = [
   // Lamborghini Vehicles
   {
     id: "lamborghini-urus",
-    name: "Lamborghini Urus",
+    name: "Lamborghini Urus MY20 2022",
     image: "/car-real/lamborghini-urus-gray.JPG",
     images: [
       "/car-real/lamborghini-urus-gray.JPG",
@@ -568,7 +568,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(420),
+    price: 2700, // Updated from PDF: 2700 AED daily (2021/2022 models)
     category: "suv",
     brand: "lamborghini",
     description: "The Lamborghini Urus is the world's first Super Sport Utility Vehicle. It combines the soul of a super sports car with the functionality of an SUV, creating a vehicle that's as comfortable on the racetrack as it is on rough terrain or urban streets.",
@@ -597,7 +597,7 @@ export const carsDatabase: Car[] = [
   // Cadillac Vehicles
   {
     id: "cadillac-escalade-v",
-    name: "Cadillac Escalade V",
+    name: "Cadillac Escalade V8 2023",
     image: "/car-real/cadillac-escalade-v.JPG",
     images: [
       "/car-real/cadillac-escalade-v.JPG",
@@ -608,7 +608,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(280),
+    price: 1500, // Updated from PDF: 1500 AED daily (2023 Grey model)
     category: "suv",
     brand: "cadillac",
     description: "The Cadillac Escalade V is the first-ever high-performance full-size luxury SUV from Cadillac's V-Series. It combines the Escalade's iconic presence and luxury with supercharged performance, distinctive sound, and extraordinary driving dynamics to create a truly unique vehicle.",
@@ -637,7 +637,7 @@ export const carsDatabase: Car[] = [
   // GMC Vehicles
   {
     id: "gmc-yukon-denali",
-    name: "GMC Yukon Denali",
+    name: "GMC Yukon 2022",
     image: "/car-real/gmc-yukon-black.JPG",
     images: [
       "/car-real/gmc-yukon-black.JPG",
@@ -649,7 +649,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(220),
+    price: 450, // Updated from PDF: 450 AED daily (2022 Black/White/Grey model)
     category: "suv",
     brand: "gmc",
     description: "The GMC Yukon Denali represents the pinnacle of GMC's full-size SUV lineup. With its distinctive styling, premium materials, and advanced technology, it delivers exceptional comfort and capability for passengers and cargo, making it ideal for both luxury travel and practical needs.",
@@ -678,7 +678,7 @@ export const carsDatabase: Car[] = [
   // Nissan Vehicles
   {
     id: "nissan-patrol-platinum",
-    name: "Nissan Patrol Platinum",
+    name: "Nissan Patrol 2025",
     image: "/car-real/nissan-patrol-platinum.JPG",
     images: [
       "/car-real/nissan-patrol-platinum.JPG",
@@ -689,7 +689,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(210),
+    price: 1100, // Updated from PDF: 1100 AED daily (2025 Grey/White model)
     category: "suv",
     brand: "nissan",
     description: "The Nissan Patrol Platinum is a flagship SUV that combines legendary off-road capability with premium luxury. Popular in the Middle East for its desert prowess and spacious comfort, it offers a sophisticated driving experience with powerful performance and advanced technology.",
@@ -718,7 +718,7 @@ export const carsDatabase: Car[] = [
   // Mini Vehicles
   {
     id: "mini-cooper-john-cooper-works",
-    name: "MINI John Cooper Works",
+    name: "MINI Cooper John Cooper Works 2022",
     image: "/car-real/mini-cooper-john-cooper-works.JPG",
     images: [
       "/car-real/mini-cooper-john-cooper-works.JPG",
@@ -729,7 +729,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 3,
     transmission: "Auto",
-    price: convertToAED(150),
+    price: 350, // Updated from PDF: 350 AED daily (2022 Red model)
     category: "sports",
     brand: "mini",
     description: "The MINI John Cooper Works is the high-performance variant of the iconic MINI Cooper, offering track-inspired thrills in a compact package. With its powerful engine, sport-tuned suspension, and distinctive styling, it delivers an exhilarating driving experience with the unmistakable MINI character.",
@@ -758,7 +758,7 @@ export const carsDatabase: Car[] = [
   // Chevrolet Vehicles
   {
     id: "chevrolet-corvette-stingray",
-    name: "Chevrolet Corvette Stingray",
+    name: "Chevrolet Corvette 2022",
     image: "/car-real/chevrolet-corvette-stingray.JPG",
     images: [
       "/car-real/chevrolet-corvette-stingray.JPG",
@@ -769,7 +769,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 2,
     transmission: "Auto",
-    price: convertToAED(240),
+    price: 1000, // Updated from PDF: 1000 AED daily (2022 Grey model)
     category: "sports",
     brand: "chevrolet",
     description: "The Chevrolet Corvette Stingray represents a revolution in the iconic American sports car's history. With its mid-engine configuration, aggressive styling, and track-capable performance, it delivers an exhilarating driving experience that rivals exotic supercars at a fraction of the price.",
@@ -796,7 +796,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "chevrolet-tahoe",
-    name: "Chevrolet Tahoe",
+    name: "Chevrolet Tahoe 2022",
     image: "/car-real/chevrolet-tahoe.JPG",
     images: [
       "/car-real/chevrolet-tahoe.JPG",
@@ -807,7 +807,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(180),
+    price: 450, // Updated from PDF: 450 AED daily (2022 Black/White model)
     category: "suv",
     brand: "chevrolet",
     description: "The Chevrolet Tahoe delivers full-size SUV capability with modern design and technology. Its spacious interior provides comfortable seating for up to eight passengers, while its robust power and towing capacity make it versatile for everything from family road trips to demanding utility needs.",
@@ -872,7 +872,7 @@ export const carsDatabase: Car[] = [
   // },
   {
     id: "kia-cerato",
-    name: "Kia Cerato",
+    name: "Kia Cerato 2022",
     image: "/car-real/kia-cerato.JPG",
     images: [
       "/car-real/kia-cerato.JPG",
@@ -883,7 +883,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 4,
     transmission: "Auto",
-    price: convertToAED(65),
+    price: 160, // Updated from PDF: 160 AED daily (2022 Blue model)
     category: "economy",
     brand: "kia",
     description: "The Kia Cerato offers a compelling blend of style, technology, and value in the compact sedan segment. With its modern design, comfortable interior, and comprehensive suite of features, it provides an elevated driving experience without the premium price tag.",
@@ -910,7 +910,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "fiat-500",
-    name: "Fiat 500",
+    name: "Fiat 500 2023",
     image: "/car-real/fiat-500.JPG",
     images: [
       "/car-real/fiat-500.JPG",
@@ -921,7 +921,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 3,
     transmission: "Auto",
-    price: convertToAED(55),
+    price: 200, // Updated from PDF: 200 AED daily (2023 White/Blue model)
     category: "economy",
     brand: "fiat",
     description: "The Fiat 500 combines Italian style with city-friendly dimensions in a charming package. Its retro-inspired design, nimble handling, and efficient performance make it perfect for urban environments, while its distinctive personality ensures it stands out from the crowd.",
@@ -948,7 +948,7 @@ export const carsDatabase: Car[] = [
   },
   {
     id: "mitsubishi-attrage",
-    name: "Mitsubishi Attrage",
+    name: "Mitsubishi Attrage 2023",
     image: "/car-real/mitsubishi-attrage.JPG",
     images: [
       "/car-real/mitsubishi-attrage.JPG",
@@ -959,7 +959,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 4,
     transmission: "Auto",
-    price: convertToAED(50),
+    price: 90, // Updated from PDF: 90 AED daily (2023 Black/White/Grey model)
     category: "economy",
     brand: "mitsubishi",
     description: "The Mitsubishi Attrage is a compact sedan that offers remarkable efficiency and practicality. With its spacious interior despite compact dimensions, excellent fuel economy, and affordable price point, it's an ideal choice for budget-conscious urban drivers seeking reliable transportation.",
@@ -988,7 +988,7 @@ export const carsDatabase: Car[] = [
   // Minivan/Crossover Vehicles
   {
     id: "mitsubishi-outlander",
-    name: "Mitsubishi Outlander",
+    name: "Mitsubishi Outlander 2024",
     image: "/car-real/mitsubishi-outlander.JPG",
     images: [
       "/car-real/mitsubishi-outlander.JPG",
@@ -999,7 +999,7 @@ export const carsDatabase: Car[] = [
     airConditioning: true,
     doors: 5,
     transmission: "Auto",
-    price: convertToAED(120),
+    price: 250, // Updated from PDF: 250 AED daily (2024/2025 models)
     category: "suv",
     brand: "mitsubishi",
     description: "The Mitsubishi Outlander offers versatile seven-seat capability in a stylish crossover package. With its bold design, comfortable interior, and advanced all-wheel control system, it provides practical family transportation with the capability to handle various driving conditions and adventures.",

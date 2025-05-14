@@ -1,7 +1,7 @@
 // app/(public)/vehicles/_actions/car-config.ts
 
 // Maximum price for car rentals (in AED)
-export const MAX_PRICE = 5000;
+export const MAX_PRICE = 5000; // Updated to match highest price in PDF
 
 // Currency code
 export const CURRENCY_CODE = 'AED';
