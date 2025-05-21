@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth dark">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} font-sans antialiased`}
